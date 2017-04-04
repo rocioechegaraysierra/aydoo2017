@@ -9,9 +9,18 @@ public class Cliente {
 	List<Revista> revistas;
 	List<ArticuloDeLibreria> articulos;
 	List <Periodico> periodicos;
+	String nombre;
+	String apellido;
+	String telefono;
 	
-	public Cliente(){
+	String direccion;
+	
+	public Cliente(String nombre, String apellido, String telefono, String direccion){
 		
+		this.nombre=nombre;
+		this.apellido=apellido;
+		this.telefono=telefono;
+		this.direccion=direccion;
 		this.libros=new ArrayList<Libro>();
 		this.revistas=new ArrayList<Revista>();
 		this.articulos= new ArrayList<ArticuloDeLibreria>();
@@ -108,7 +117,41 @@ public class Cliente {
 		return montoTotal;
 	}
 	
-	
+	public List<Libro> getLibros() {
+		return libros;
+	}
+
+	public List<Revista> getRevistas() {
+		return revistas;
+	}
+
+
+	public List<ArticuloDeLibreria> getArticulos() {
+		return articulos;
+	}
+
+	public List<Periodico> getPeriodicos() {
+		return periodicos;
+	}
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
 	
 
 	

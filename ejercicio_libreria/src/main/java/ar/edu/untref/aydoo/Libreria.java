@@ -35,5 +35,36 @@ public class Libreria {
 		return monto;	
 	}
 	
+	public List<Revista> verSuscripcionesARevista(Cliente clienteSuscrip){
+		
+		List<Revista> revistas = new ArrayList<Revista>(); 
+		
+		Iterator<Cliente> itCliente= this.clientes.iterator();
+		while(itCliente.hasNext()){
+			Cliente cliente = itCliente.next();
+			if(cliente == clienteSuscrip){
+				revistas=cliente.getRevistas();
+			}
+		}
+		
+		
+		return revistas;	
+	}
+	
+	public List<Periodico> verSuscripcionesAPeriodico(Cliente clientePeriod){
+		
+		List<Periodico> periodicos = new ArrayList<Periodico>(); 
+		
+		Iterator<Cliente> itCliente= this.clientes.iterator();
+		while(itCliente.hasNext()){
+			Cliente cliente = itCliente.next();
+			if(cliente == clientePeriod){
+				periodicos=cliente.getPeriodicos();
+			}
+		}
+		
+		
+		return periodicos;	
+	}
 
 }

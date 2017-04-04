@@ -1,17 +1,29 @@
 
 public class Periodico {
 
+	String nombre;
 	double precio;
 	int cantidadDeEjemplaresEnUnMes;
 	boolean suscripcionAnual;
+	int mesDeCompra;
 	
-	public Periodico (double precio, int cantidadDeEjemplaresEnUnMes, boolean suscripcionAnual){
+	public Periodico (String nombre, double precio, int cantidadDeEjemplaresEnUnMes, boolean suscripcionAnual, int mes){
+		this.nombre=nombre;
 		this.setPrecio(precio, cantidadDeEjemplaresEnUnMes, suscripcionAnual);
 		this.cantidadDeEjemplaresEnUnMes=cantidadDeEjemplaresEnUnMes;
 		this.suscripcionAnual=suscripcionAnual;
+		this.mesDeCompra=mes;
 		
 	}
 	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public int getMesDeCompra() {
+		return mesDeCompra;
+	}
+
 	public double getPrecio() {
 		return precio;
 	}

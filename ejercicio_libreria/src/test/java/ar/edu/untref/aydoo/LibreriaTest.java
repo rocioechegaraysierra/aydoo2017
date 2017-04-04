@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -8,9 +11,9 @@ public class LibreriaTest {
 	@Test
 	public void obtenerPrecioDeUnLibro(){
 		
-		Libro l = new Libro(35.0);
+		Libro negro = new Libro("Negro", "Mario Alfonso",35.0, 1);
 	
-		double precio=l.getPrecio();
+		double precio=negro.getPrecio();
 		
 		Assert.assertTrue(precio==35.0);
 		
@@ -19,9 +22,9 @@ public class LibreriaTest {
 	@Test
 	public void obtenerPrecioDeArticuloDeLibreria(){
 		
-		ArticuloDeLibreria a = new ArticuloDeLibreria(100.0);
+		ArticuloDeLibreria lapiz = new ArticuloDeLibreria("Lapiz", 100.0, 1);
 		
-		double precio=a.getPrecio();
+		double precio=lapiz.getPrecio();
 		
 		Assert.assertEquals(121.0, precio, 0.1);
 	}
@@ -29,9 +32,9 @@ public class LibreriaTest {
 	@Test
 	public void obtenerPrecioDeRevistaQueSeEmiteUnaVezAlMesSinSuscripcionAnual(){
 		
-		Revista r= new Revista(100.0, 1, false);
+		Revista rosa= new Revista("Rosa",100.0, 1, false, 1);
 		
-		double precio=r.getPrecio();
+		double precio=rosa.getPrecio();
 		
 		Assert.assertEquals(100.0, precio, 0.1);
 	}
@@ -39,9 +42,9 @@ public class LibreriaTest {
 	@Test
 	public void obtenerPrecioDeRevistaQueSeEmite3VecesAlMesSinSuscripcionAnual(){
 		
-		Revista r= new Revista(100.0, 3, false);
+		Revista rosa= new Revista("Rosa",100.0, 3, false, 1);
 		
-		double precio=r.getPrecio();
+		double precio=rosa.getPrecio();
 		
 		Assert.assertEquals(300.0, precio, 0.1);
 	}
@@ -49,9 +52,9 @@ public class LibreriaTest {
 	@Test
 	public void obtenerPrecioDeRevistaQueSeEmiteUnaVezAleMesConSuscripcionAnual(){
 		
-		Revista r= new Revista(100.0, 1, true);
+		Revista rosa= new Revista("Rosa", 100.0, 1, true, 1);
 		
-		double precio=r.getPrecio();
+		double precio=rosa.getPrecio();
 		
 		Assert.assertEquals(80.0, precio, 0.1);
 	}
@@ -59,9 +62,9 @@ public class LibreriaTest {
 	@Test
 	public void obtenerPrecioDeRevistaQueSeEmite3VecesAlMesConSuscripcionAnual(){
 		
-		Revista r= new Revista(100.0, 3, true);
+		Revista rosa= new Revista("Rosa", 100.0, 3, true, 1);
 		
-		double precio=r.getPrecio();
+		double precio=rosa.getPrecio();
 		
 		Assert.assertEquals(240.0, precio, 0.1);
 	}
@@ -69,9 +72,9 @@ public class LibreriaTest {
 	@Test 
 	public void obtenerPrecioDePeriodicoQueSeEmiteUnaVezAlMesSinSuscripcionAnual(){
 		
-		Periodico p = new Periodico(100.0, 1, false);
+		Periodico gaceta = new Periodico("La Gaceta", 100.0, 1, false, 1);
 		
-		double precio=p.getPrecio();
+		double precio=gaceta.getPrecio();
 		
 		Assert.assertEquals(100.0, precio, 0.1);
 		
@@ -80,9 +83,9 @@ public class LibreriaTest {
 	@Test 
 	public void obtenerPrecioDePeriodicoQueSeEmiteUnaVezAlMesConSuscripcionAnual(){
 		
-		Periodico p = new Periodico(100.0, 1, true);
+		Periodico gaceta = new Periodico("La Gaceta", 100.0, 1, true, 1);
 		
-		double precio=p.getPrecio();
+		double precio=gaceta.getPrecio();
 		
 		Assert.assertEquals(80.0, precio, 0.1);
 		
@@ -91,9 +94,9 @@ public class LibreriaTest {
 	@Test 
 	public void obtenerPrecioDePeriodicoQueSeEmite4VezAlMesSinSuscripcionAnual(){
 		
-		Periodico p = new Periodico(100.0, 4, false);
+		Periodico gaceta = new Periodico("La Gaceta", 100.0, 4, false, 1);
 		
-		double precio=p.getPrecio();
+		double precio=gaceta.getPrecio();
 		
 		Assert.assertEquals(400.0, precio, 0.1);
 		
@@ -102,9 +105,9 @@ public class LibreriaTest {
 	@Test 
 	public void obtenerPrecioDePeriodicoQueSeEmite4VezAlMesConSuscripcionAnual(){
 		
-		Periodico p = new Periodico(100.0, 4, true);
+		Periodico gaceta = new Periodico("La Gaceta", 100.0, 4, true, 1);
 		
-		double precio=p.getPrecio();
+		double precio=gaceta.getPrecio();
 		
 		Assert.assertEquals(320.0, precio, 0.1);
 		
@@ -113,11 +116,11 @@ public class LibreriaTest {
 	@Test
 	
 	public void verCantidadDeUnLibroAgregadoALaListaDeLibrosDelCiente(){
-		Cliente c= new Cliente();
-		Libro l = new Libro(35.0);
-		c.agregarLibro(l);
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		Libro terror = new Libro("Terror de noche", "Lucas Marianz", 35.0, 1);
+		carlos.agregarLibro(terror);
 		
-		int tam= c.cantidadDeLibros();
+		int tam= carlos.cantidadDeLibros();
 		
 		Assert.assertTrue(tam==1);
 		
@@ -129,15 +132,16 @@ public class LibreriaTest {
 	@Test
 	
 	public void verCantidadDe3LibrosAgregadosALaListaDeLibrosDelCiente(){
-		Cliente c= new Cliente();
-		Libro l = new Libro(35.0);
-		Libro q = new Libro(35.0);
-		Libro w = new Libro(35.0);
-		c.agregarLibro(l);
-		c.agregarLibro(q);
-		c.agregarLibro(w);
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		Libro luces = new Libro("Luces de noche", "Alfredo Gonz", 35.0, 1);
+		Libro querer = new Libro("Querer es poder", "Bernardo Stamateas", 35.0, 1);
+		Libro estrellas = new Libro("Estrellas en el cilo", "Mariano Bernardi", 35.0, 1);
 		
-		int tam= c.cantidadDeLibros();
+		carlos.agregarLibro(luces);
+		carlos.agregarLibro(querer);
+		carlos.agregarLibro(estrellas);
+		
+		int tam= carlos.cantidadDeLibros();
 		
 		Assert.assertTrue(tam==3);
 		
@@ -149,11 +153,11 @@ public class LibreriaTest {
 	@Test
 	public void verCantidadDeUnaRevistaAgregadaALaListaDeRevistasdelCliente(){
 		
-		Cliente c = new Cliente();
-		Revista r= new Revista(100.0, 1, true);
-		c.agregarRevista(r);
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		Revista rosa= new Revista("Rosa",100.0, 1, true, 1);
+		carlos.agregarRevista(rosa);
 		
-		int tam=c.cantidadDeRevistas();
+		int tam=carlos.cantidadDeRevistas();
 
 		Assert.assertTrue(tam==1);
 	
@@ -163,16 +167,16 @@ public class LibreriaTest {
 	@Test
 	public void verCantidadDe3RevistasAgregadasALaListaDeRevistasDelCliente(){
 		
-		Cliente c = new Cliente();
-		Revista r= new Revista(100.0, 1, true);
-		Revista z= new Revista(100.0, 1, true);
-		Revista y= new Revista(100.0, 1, true);
-		c.agregarRevista(r);
-		c.agregarRevista(z);
-		c.agregarRevista(y);
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		Revista rosa= new Revista("Rosa", 100.0, 1, true, 1);
+		Revista zoe= new Revista("Zoe", 100.0, 1, true, 1);
+		Revista yuya= new Revista("Yuya", 100.0, 1, true, 1);
+		carlos.agregarRevista(rosa);
+		carlos.agregarRevista(zoe);
+		carlos.agregarRevista(yuya);
 		
 		
-		int tam=c.cantidadDeRevistas();
+		int tam=carlos.cantidadDeRevistas();
 
 		Assert.assertTrue(tam==3);
 	
@@ -182,11 +186,11 @@ public class LibreriaTest {
 	@Test
 	public void verCantidadUnArticuloAgregadoALaListaDeArticulosDelCliente(){
 		
-		Cliente c = new Cliente();
-		ArticuloDeLibreria a = new ArticuloDeLibreria(100.0);
-		c.agregarArticulo(a);
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		ArticuloDeLibreria lapicera = new ArticuloDeLibreria("Lapicera", 100.0, 1);
+		carlos.agregarArticulo(lapicera);
 		
-		int tam=c.cantidadDeArticulos();
+		int tam=carlos.cantidadDeArticulos();
 		
 		Assert.assertTrue(tam==1);
 		
@@ -196,15 +200,15 @@ public class LibreriaTest {
 	@Test
 	public void verCantidadDe3ArticuloAgregadoALaListaDeArticulosDelCliente(){
 		
-		Cliente c = new Cliente();
-		ArticuloDeLibreria a = new ArticuloDeLibreria(100.0);
-		ArticuloDeLibreria b = new ArticuloDeLibreria(100.0);
-		ArticuloDeLibreria f = new ArticuloDeLibreria(100.0);
-		c.agregarArticulo(a);
-		c.agregarArticulo(b);
-		c.agregarArticulo(f);
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		ArticuloDeLibreria lapicera = new ArticuloDeLibreria("Lapicera",100.0, 1);
+		ArticuloDeLibreria tijera = new ArticuloDeLibreria("Tijera", 100.0, 1);
+		ArticuloDeLibreria lapiz = new ArticuloDeLibreria("Lapiz", 100.0, 1);
+		carlos.agregarArticulo(lapicera);
+		carlos.agregarArticulo(tijera);
+		carlos.agregarArticulo(lapiz);
 		
-		int tam=c.cantidadDeArticulos();
+		int tam=carlos.cantidadDeArticulos();
 		
 		Assert.assertTrue(tam==3);
 			
@@ -213,11 +217,11 @@ public class LibreriaTest {
 	@Test
 	public void verCantidadDeUnPeriodicoAgregadoALaListaDePeriodicosDelCliente(){
 		
-		Cliente c = new Cliente();
-		Periodico p = new Periodico(100.0, 1, true);
-		c.agregarPeriodico(p);
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		Periodico clarin = new Periodico("Clarin", 100.0, 1, true, 1);
+		carlos.agregarPeriodico(clarin);
 		
-		int tam=c.cantidadDePeriodicos();
+		int tam=carlos.cantidadDePeriodicos();
 		
 		
 		Assert.assertTrue(tam==1);
@@ -227,15 +231,15 @@ public class LibreriaTest {
 	@Test
 	public void verCantidadDe3PeriodicosAgregadoALaListaDePeriodicosDelCliente(){
 		
-		Cliente c = new Cliente();
-		Periodico p = new Periodico(100.0, 1, true);
-		Periodico j = new Periodico(100.0, 1, true);
-		Periodico s = new Periodico(100.0, 1, true);
-		c.agregarPeriodico(p);
-		c.agregarPeriodico(j);
-		c.agregarPeriodico(s);
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		Periodico gaceta = new Periodico("La Gaceta", 100.0, 1, true, 1);
+		Periodico nacion = new Periodico("La Nacion", 100.0, 1, true, 1);
+		Periodico perfil = new Periodico("Perfil", 100.0, 1, true, 1);
+		carlos.agregarPeriodico(gaceta);
+		carlos.agregarPeriodico(nacion);
+		carlos.agregarPeriodico(perfil);
 		
-		int tam=c.cantidadDePeriodicos();
+		int tam=carlos.cantidadDePeriodicos();
 		
 		
 		Assert.assertTrue(tam==3);
@@ -246,8 +250,8 @@ public class LibreriaTest {
 	public void agregarClienteALaLibreria(){
 		
 		Libreria libreria = new Libreria();
-		Cliente lucia= new Cliente();
-		libreria.agregarCliente(lucia);
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		libreria.agregarCliente(carlos);
 		
 		int tam=libreria.cantidadDeClientes();
 		
@@ -258,10 +262,10 @@ public class LibreriaTest {
 	public void agregarClientesALaLibreria(){
 		
 		Libreria libreria = new Libreria();
-		Cliente lucia= new Cliente();
-		Cliente lucas= new Cliente();
-		Cliente martin= new Cliente();
-		Cliente marcos= new Cliente();
+		Cliente lucia= new Cliente("Lucia", "Ortiz","45344654", "Vallejos 4321");
+		Cliente lucas= new Cliente("Lucas", "Martinez", "43267854", "Lima 24");
+		Cliente martin= new Cliente("Martin", "Ortega", "45768097", "Corrientes 1234");
+		Cliente marcos= new Cliente("Marcos", "Perez", "49564376", "Segurola 2495");
 		libreria.agregarCliente(lucia);
 		libreria.agregarCliente(lucas);
 		libreria.agregarCliente(martin);
@@ -277,16 +281,16 @@ public class LibreriaTest {
 	@Test
 	public void verMontoDe3LibrosAgregadosALaListaDeLibrosDelCiente(){
 	
-		Cliente c= new Cliente();
-		Libro l = new Libro(30.0);
-		Libro q = new Libro(30.0);
-		Libro w = new Libro(30.0);
-		c.agregarLibro(l);
-		c.agregarLibro(q);
-		c.agregarLibro(w);
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		Libro luz = new Libro("Luz", "Alberto Fran", 30.0, 1);
+		Libro amarillo = new Libro("Amarillo", "Oscar Moreno", 30.0, 1);
+		Libro subir = new Libro("Subir", "Esteban Rios", 30.0, 1);
+		carlos.agregarLibro(luz);
+		carlos.agregarLibro(amarillo);
+		carlos.agregarLibro(subir);
 		
 		
-		double costo= c.calcularMontoLibros();
+		double costo= carlos.calcularMontoLibros();
 		
 		
 		Assert.assertTrue(costo==90);
@@ -296,15 +300,15 @@ public class LibreriaTest {
 
 	@Test
 	public void verMontoDe3ArticulosAgregadosEnElListadoDelCliente(){
-		Cliente c = new Cliente();
-		ArticuloDeLibreria a = new ArticuloDeLibreria(100.0);
-		ArticuloDeLibreria b = new ArticuloDeLibreria(100.0);
-		ArticuloDeLibreria f = new ArticuloDeLibreria(100.0);
-		c.agregarArticulo(a);
-		c.agregarArticulo(b);
-		c.agregarArticulo(f);
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		ArticuloDeLibreria lapiz = new ArticuloDeLibreria("Lapiz", 100.0, 1);
+		ArticuloDeLibreria lapicera = new ArticuloDeLibreria("Lapicera", 100.0, 1);
+		ArticuloDeLibreria regla = new ArticuloDeLibreria("Regla", 100.0, 1);
+		carlos.agregarArticulo(lapiz);
+		carlos.agregarArticulo(lapicera);
+		carlos.agregarArticulo(regla);
 		
-		double costo=c.calcularMontoArticulosLibreria();
+		double costo=carlos.calcularMontoArticulosLibreria();
 		
 		Assert.assertTrue(costo==363);
 		
@@ -313,17 +317,15 @@ public class LibreriaTest {
 	
 	@Test 
 	public void verMontoDe3PeriodicosAgregadosEnElListadoDelCliente(){
-		Cliente c= new Cliente();
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		Periodico perfil = new Periodico("Perfil", 100.0, 1, true, 1);
+		Periodico gaceta = new Periodico("La Gaceta", 100.0, 1, true, 1);
+		Periodico clarin = new Periodico("Perfil", 100.0, 1, true, 1);
+		carlos.agregarPeriodico(perfil);
+		carlos.agregarPeriodico(gaceta);
+		carlos.agregarPeriodico(clarin);
 		
-		Periodico p = new Periodico(100.0, 1, true);
-		Periodico m = new Periodico(100.0, 1, true);
-		Periodico h = new Periodico(100.0, 1, true);
-		
-		c.agregarPeriodico(p);
-		c.agregarPeriodico(m);
-		c.agregarPeriodico(h);
-		
-		double costo= c.calcularMontoPeriodicos();
+		double costo= carlos.calcularMontoPeriodicos();
 		
 		Assert.assertTrue(costo==240);
 		
@@ -333,39 +335,32 @@ public class LibreriaTest {
 	
 	@Test
 	public void verMontoDeUnaRevistasAgregadasEnElListadoDelCliente(){
-		Cliente c = new Cliente();
-		Revista r= new Revista(100.0, 1, true);
-		Revista z= new Revista(100.0, 1, true);
-		Revista y= new Revista(100.0, 1, true);
-		c.agregarRevista(r);
-		c.agregarRevista(z);
-		c.agregarRevista(y);
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		Revista rosa= new Revista("Rosa", 100.0, 1, true, 1);
+		Revista zoe= new Revista("Zoe", 100.0, 1, true, 1);
+		Revista yuya= new Revista("Yuya",100.0, 1, true, 1);
+		carlos.agregarRevista(rosa);
+		carlos.agregarRevista(zoe);
+		carlos.agregarRevista(yuya);
 		
-		
-		int tam=c.cantidadDeRevistas();
-
-	
-		double costo=c.calcularMontoRevista();
-		
-		
+		double costo=carlos.calcularMontoRevista();
+				
 		Assert.assertEquals(240.0, costo, 0.1);
 	}
 	
 	@Test
 	public void calcularMontoTotalDesdeElCliente(){
-		Cliente c= new Cliente();
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		Periodico perfil = new Periodico("Perfil", 100.0, 1, true, 1);
+		Revista rosa= new Revista("Rosa", 100.0, 1, true, 1);
+		Libro luz = new Libro("Luz", "Alberto Martinez", 30.0, 1);
+		ArticuloDeLibreria lapicera = new ArticuloDeLibreria("Lapicera", 100.0, 1);
+		carlos.agregarPeriodico(perfil);
+		carlos.agregarRevista(rosa);
+		carlos.agregarArticulo(lapicera);
+		carlos.agregarLibro(luz);
 		
-		Periodico p = new Periodico(100.0, 1, true);
-		Revista r= new Revista(100.0, 1, true);
-		Libro l = new Libro(30.0);
-		ArticuloDeLibreria a = new ArticuloDeLibreria(100.0);
-		
-		c.agregarPeriodico(p);
-		c.agregarRevista(r);
-		c.agregarArticulo(a);
-		c.agregarLibro(l);
-		
-		double costo = c.calcularMontoTotal();
+		double costo = carlos.calcularMontoTotal();
 		
 		Assert.assertEquals(311.0, costo, 0.1);
 	}
@@ -374,25 +369,62 @@ public class LibreriaTest {
 	public void calcularMontoDeCliente(){
 		
 		Libreria libreria = new Libreria();
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		Periodico perfil = new Periodico("Perfil", 100.0, 1, true, 1);
+		Revista rosa= new Revista("Rosa", 100.0, 1, true, 1);
+		Libro luz = new Libro("Luz", "Alberto Martinez", 30.0, 1);
+		ArticuloDeLibreria lapiz = new ArticuloDeLibreria("Lapiz", 100.0, 1);
 		
-		Cliente c= new Cliente();
+		carlos.agregarPeriodico(perfil);
+		carlos.agregarRevista(rosa);
+		carlos.agregarArticulo(lapiz);
+		carlos.agregarLibro(luz);
 		
-		Periodico p = new Periodico(100.0, 1, true);
-		Revista r= new Revista(100.0, 1, true);
-		Libro l = new Libro(30.0);
-		ArticuloDeLibreria a = new ArticuloDeLibreria(100.0);
+		libreria.agregarCliente(carlos);
 		
-		c.agregarPeriodico(p);
-		c.agregarRevista(r);
-		c.agregarArticulo(a);
-		c.agregarLibro(l);
-		
-		libreria.agregarCliente(c);
-		
-		double costo = libreria.calcularMontoTotal(c);
+		double costo = libreria.calcularMontoTotal(carlos);
 		
 		Assert.assertEquals(311.0, costo, 0.1);
 	}
 	
+	@Test
+	public void verSuscripcionesARevistasDeCliente(){
+		Libreria libreria = new Libreria();
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		libreria.agregarCliente(carlos);
+		Revista rosa= new Revista("Rosa", 100.0, 1, true, 1);
+		Revista zoe= new Revista("Zoe", 100.0, 1, true, 1);
+		Revista yuya= new Revista("Yuya", 100.0, 1, true, 1);
+		carlos.agregarRevista(rosa);
+		carlos.agregarRevista(zoe);
+		carlos.agregarRevista(yuya);
+		
+		List<Revista> listado= new ArrayList<Revista>();
+		listado.add(rosa);
+		listado.add(zoe);
+		listado.add(yuya);
+		
+		Assert.assertEquals(listado, libreria.verSuscripcionesARevista(carlos));
+	}
 	
+	@Test 
+	public void verSuscripcionesAPeridiocosDeCliente(){
+		Libreria libreria = new Libreria();
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		libreria.agregarCliente(carlos);
+		Periodico gaceta = new Periodico("La Gaceta", 100.0, 1, true, 1);
+		Periodico nacion = new Periodico("La Nacion", 100.0, 1, true, 1);
+		Periodico perfil = new Periodico("Perfil", 100.0, 1, true, 1);
+		carlos.agregarPeriodico(gaceta);
+		carlos.agregarPeriodico(nacion);
+		carlos.agregarPeriodico(perfil);
+		
+		List<Periodico> listado = new ArrayList<Periodico>();
+		listado.add(gaceta);
+		listado.add(nacion);
+		listado.add(perfil);
+		
+		Assert.assertEquals(listado, libreria.verSuscripcionesAPeriodico(carlos));
+		
+	}
 }
