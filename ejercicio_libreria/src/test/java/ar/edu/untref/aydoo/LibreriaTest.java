@@ -290,7 +290,7 @@ public class LibreriaTest {
 		carlos.agregarLibro(subir);
 		
 		
-		double costo= carlos.calcularMontoLibros();
+		double costo= carlos.calcularMontoLibros(1);
 		
 		
 		Assert.assertTrue(costo==90);
@@ -308,7 +308,7 @@ public class LibreriaTest {
 		carlos.agregarArticulo(lapicera);
 		carlos.agregarArticulo(regla);
 		
-		double costo=carlos.calcularMontoArticulosLibreria();
+		double costo=carlos.calcularMontoArticulosLibreria(1);
 		
 		Assert.assertTrue(costo==363);
 		
@@ -325,7 +325,7 @@ public class LibreriaTest {
 		carlos.agregarPeriodico(gaceta);
 		carlos.agregarPeriodico(clarin);
 		
-		double costo= carlos.calcularMontoPeriodicos();
+		double costo= carlos.calcularMontoPeriodicos(1);
 		
 		Assert.assertTrue(costo==240);
 		
@@ -343,7 +343,7 @@ public class LibreriaTest {
 		carlos.agregarRevista(zoe);
 		carlos.agregarRevista(yuya);
 		
-		double costo=carlos.calcularMontoRevista();
+		double costo=carlos.calcularMontoRevista(1);
 				
 		Assert.assertEquals(240.0, costo, 0.1);
 	}
@@ -360,13 +360,13 @@ public class LibreriaTest {
 		carlos.agregarArticulo(lapicera);
 		carlos.agregarLibro(luz);
 		
-		double costo = carlos.calcularMontoTotal();
+		double costo = carlos.calcularMontoTotal(1);
 		
 		Assert.assertEquals(311.0, costo, 0.1);
 	}
 	
 	@Test
-	public void calcularMontoDeCliente(){
+	public void calcularMontoDeClienteDeDistintosProductos(){
 		
 		Libreria libreria = new Libreria();
 		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
@@ -382,7 +382,7 @@ public class LibreriaTest {
 		
 		libreria.agregarCliente(carlos);
 		
-		double costo = libreria.calcularMontoTotal(carlos);
+		double costo = libreria.calcularMontoTotal(1, carlos);
 		
 		Assert.assertEquals(311.0, costo, 0.1);
 	}
@@ -427,4 +427,144 @@ public class LibreriaTest {
 		Assert.assertEquals(listado, libreria.verSuscripcionesAPeriodico(carlos));
 		
 	}
+	
+	
+
+	@Test
+	public void buscarRevistasCompradasEnMes4(){
+		Libreria libreria = new Libreria();
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		libreria.agregarCliente(carlos);
+		Revista rosa= new Revista("Rosa", 100.0, 1, true, 1);
+		Revista zoe= new Revista("Zoe", 100.0, 1, true, 4);
+		Revista yuya= new Revista("Yuya",100.0, 1, true, 1);
+		carlos.agregarRevista(rosa);
+		carlos.agregarRevista(zoe);
+		carlos.agregarRevista(yuya);
+		
+		List<Revista> revistas= new ArrayList<Revista>();
+		revistas.add(zoe);
+		
+		Assert.assertEquals(revistas,libreria.buscarRevistasCompradas(4, carlos));
+		
+		
+	}
+	
+	@Test
+	public void buscarPeriodicosCompradosEnMes1(){
+		Libreria libreria = new Libreria();
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		libreria.agregarCliente(carlos);
+		Periodico gaceta = new Periodico("La Gaceta", 100.0, 1, true, 1);
+		Periodico nacion = new Periodico("La Nacion", 100.0, 1, true, 1);
+		Periodico perfil = new Periodico("Perfil", 100.0, 1, true, 3);
+		carlos.agregarPeriodico(gaceta);
+		carlos.agregarPeriodico(nacion);
+		carlos.agregarPeriodico(perfil);
+		
+		List<Periodico> listado = new ArrayList<Periodico>();
+		listado.add(gaceta);
+		listado.add(nacion);
+		
+		Assert.assertEquals(listado, libreria.buscarPeriodicosComprados(1, carlos));
+	}
+	
+	@Test
+	public void buscarLibrosCompradosEnMes5(){
+		
+		Libreria libreria = new Libreria();
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		libreria.agregarCliente(carlos);
+		Libro luces = new Libro("Luces de noche", "Alfredo Gonz", 35.0, 5);
+		Libro querer = new Libro("Querer es poder", "Bernardo Stamateas", 35.0, 1);
+		Libro estrellas = new Libro("Estrellas en el cilo", "Mariano Bernardi", 35.0, 5);
+		carlos.agregarLibro(luces);
+		carlos.agregarLibro(querer);
+		carlos.agregarLibro(estrellas);
+		
+		List<Libro> listado = new ArrayList<Libro>();
+		listado.add(luces);
+		listado.add(estrellas);
+		
+		Assert.assertEquals(listado, libreria.buscarLibrosComprados(5, carlos));
+	}
+	
+	@Test
+	public void buscarArticulosDeLibreriaDeMes4(){
+		Libreria libreria = new Libreria();
+		Cliente carlos= new Cliente("carlos", "perez", "45066789", "Uruguay 4567");
+		libreria.agregarCliente(carlos);
+		ArticuloDeLibreria lapiz = new ArticuloDeLibreria("Lapiz", 100.0, 2);
+		ArticuloDeLibreria lapicera = new ArticuloDeLibreria("Lapicera", 100.0, 1);
+		ArticuloDeLibreria regla = new ArticuloDeLibreria("Regla", 100.0, 4);
+		carlos.agregarArticulo(lapiz);
+		carlos.agregarArticulo(lapicera);
+		carlos.agregarArticulo(regla);	
+		
+		List<ArticuloDeLibreria> listado = new ArrayList<ArticuloDeLibreria>();
+		listado.add(regla);
+				
+		Assert.assertEquals(listado, libreria.buscarArticulosComprados(4, carlos));
+		
+	}
+	
+	@Test
+	public void calcularMontoDeCompraIndicandoElMes3(){
+		
+		Libreria libreria = new Libreria();
+		Cliente carlos= new Cliente("Carlos", "Perez", "45066789", "Uruguay 4567");
+		Periodico perfil = new Periodico("Perfil", 100.0, 1, true, 2);
+		Revista rosa= new Revista("Rosa", 100.0, 1, true, 1);
+		Libro luz = new Libro("Luz", "Alberto Martinez", 30.0, 3);
+		ArticuloDeLibreria lapiz = new ArticuloDeLibreria("Lapiz", 100.0, 4);
+		
+		carlos.agregarPeriodico(perfil);
+		carlos.agregarRevista(rosa);
+		carlos.agregarArticulo(lapiz);
+		carlos.agregarLibro(luz);
+		
+		libreria.agregarCliente(carlos);
+		
+		double costo = libreria.calcularMontoTotal(3, carlos);
+		
+		Assert.assertEquals(30.0, costo, 0.1);
+	}
+	
+	@Test
+	public void calcularCaso1DeEjemploPlanteadoEnElEnunciado(){
+		
+		Libreria libreria = new Libreria();
+		Cliente juan= new Cliente("Juan", "Perez", "45066789", "Uruguay 4567");
+		libreria.agregarCliente(juan);
+		Libro hobbit = new Libro("El Hobbit", "Tolkien", 50.0, 8);
+		ArticuloDeLibreria lapiceraB = new ArticuloDeLibreria("Lapicera Bic", 5.0, 8);
+		ArticuloDeLibreria lapiceraS = new ArticuloDeLibreria("Lapicera Simball", 5.0, 8);
+		Revista grafico= new Revista("El Grafico", 30.0, 1, false, 8);
+		juan.agregarRevista(grafico);
+		juan.agregarArticulo(lapiceraB);
+		juan.agregarArticulo(lapiceraS);
+		juan.agregarLibro(hobbit);
+		
+		
+		double costo = libreria.calcularMontoTotal(8, juan);
+		
+		Assert.assertEquals(92.1, costo, 0.1);
+	}
+	@Test
+	public void calcularCaso2DeEjemploPlanteadoEnElEnunciado(){
+		
+		Libreria libreria = new Libreria();
+		Cliente maria= new Cliente("Maria", "Perez", "45066789", "Uruguay 4567");
+		libreria.agregarCliente(maria);
+		Revista barcelona= new Revista("Barcelona", 20.0, 2, true, 1);
+		Periodico pagina12= new Periodico("Pagina 12", 12.0, 1, false, 1);
+		maria.agregarRevista(barcelona);
+		maria.agregarPeriodico(pagina12);
+		
+		
+		double costo = libreria.calcularMontoTotal(1, maria);
+		
+		Assert.assertEquals(44.0, costo, 0.1);
+	}
+	
 }

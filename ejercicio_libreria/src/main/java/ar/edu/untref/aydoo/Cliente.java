@@ -60,59 +60,67 @@ public class Cliente {
 		return this.periodicos.size();
 	}
 
-	public double calcularMontoLibros(){
+	public double calcularMontoLibros(int mes){
 		
 		double monto=0;
 		Iterator<Libro> itLibro = this.libros.iterator();
 		while(itLibro.hasNext()){
 			Libro libro= itLibro.next();
-			monto+=libro.getPrecio();
+			if(libro.mesDeCompra==mes){
+				monto+=libro.getPrecio();
+			}
 		}
 		 return monto;
 	}
 	
-	public double calcularMontoArticulosLibreria(){
+	public double calcularMontoArticulosLibreria(int mes){
 		double monto=0;
 		Iterator<ArticuloDeLibreria> itArt= this.articulos.iterator();
 		while(itArt.hasNext()){
 			ArticuloDeLibreria articulo = itArt.next();
-			monto+=articulo.getPrecio();
+			if(articulo.mesDeCompra==mes){
+				monto+=articulo.getPrecio();
+			}
 		}
 		
 		return monto;
 	}
 	
 	
-	public double calcularMontoPeriodicos(){
+	public double calcularMontoPeriodicos(int mes){
 		double monto=0;
 		Iterator<Periodico> itPeriodico= this.periodicos.iterator();
 		while(itPeriodico.hasNext()){
 			Periodico periodico= itPeriodico.next();
-			monto+=periodico.getPrecio();
+			if(periodico.mesDeCompra==mes){
+				monto+=periodico.getPrecio();
+			}
 		}
 		
 		return monto;
 	}
 	
-	public double calcularMontoRevista(){
+	public double calcularMontoRevista(int mes){
 		double monto=0;
 		Iterator<Revista> itRevista= this.revistas.iterator();
 		while(itRevista.hasNext()){
 			Revista revista= itRevista.next();
-			monto+=revista.getPrecio();
+			if(revista.mesDeCompra== mes){
+				monto+=revista.getPrecio();
+			}
 		}
 		
 		return monto;
 	}
 	
-	public double calcularMontoTotal(){
+	public double calcularMontoTotal(int mes){
 		
 		double montoTotal=0;
 		
-		montoTotal+= this.calcularMontoArticulosLibreria();
-		montoTotal+= this.calcularMontoLibros();
-		montoTotal+= this.calcularMontoPeriodicos(); 
-		montoTotal+= this.calcularMontoRevista();
+		montoTotal+= this.calcularMontoArticulosLibreria(mes);
+		montoTotal+= this.calcularMontoLibros(mes);
+		montoTotal+= this.calcularMontoPeriodicos(mes); 
+		montoTotal+= this.calcularMontoRevista(mes);
 		
 		return montoTotal;
 	}
@@ -124,7 +132,6 @@ public class Cliente {
 	public List<Revista> getRevistas() {
 		return revistas;
 	}
-
 
 	public List<ArticuloDeLibreria> getArticulos() {
 		return articulos;
@@ -152,7 +159,65 @@ public class Cliente {
 		return direccion;
 	}
 
-	
+	public List<Libro> buscarLibrosComprados(int mes) {
+		
+		List<Libro> librosBuscados= new ArrayList<Libro>();
+		
+		Iterator<Libro> itLibro = this.libros.iterator();
+		while(itLibro.hasNext()){
+			Libro libro= itLibro.next();
+			if(libro.mesDeCompra==mes){
+				librosBuscados.add(libro);
+			}
+		}
+		
+		return librosBuscados;
+	}
+
+	public List<Revista> buscarRevistasCompradas(int mes) {
+		
+		List<Revista> revistasBuscadas =new ArrayList<Revista>();
+		
+		Iterator<Revista> itRevista = this.revistas.iterator();
+		while(itRevista.hasNext()){
+			Revista revista= itRevista.next();
+			if(revista.mesDeCompra== mes){
+				revistasBuscadas.add(revista);
+			}
+		}
+		
+		return revistasBuscadas;
+	}
+
+	public List<Periodico> buscarPeriodicosComprados(int mes) {
+		List<Periodico> periodicosBuscados = new ArrayList<Periodico>();
+		
+		Iterator<Periodico> itPer= this.periodicos.iterator();
+		while(itPer.hasNext()){
+			Periodico periodico = itPer.next();
+			if(periodico.mesDeCompra== mes){
+				periodicosBuscados.add(periodico);
+			}
+		}
+		
+		return periodicosBuscados;
+	}
+
+	public List<ArticuloDeLibreria> buscarArticulosComprados(int mes) {
+		List<ArticuloDeLibreria> articulos = new ArrayList<ArticuloDeLibreria>();
+		
+		Iterator<ArticuloDeLibreria> itArt = this.articulos.iterator();
+		while(itArt.hasNext()){
+			ArticuloDeLibreria articulo = itArt.next();
+			if(articulo.mesDeCompra == mes){
+				articulos.add(articulo);
+			}
+		}
+		return articulos;
+	}
+
+
+
 
 	
 
