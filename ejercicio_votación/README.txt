@@ -1,0 +1,1 @@
+En "mainClass" del archivo POM coloqué "JuntaElectoral". No sé si eso es correcto.
