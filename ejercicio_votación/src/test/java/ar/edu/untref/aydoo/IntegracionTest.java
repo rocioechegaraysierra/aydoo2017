@@ -7,7 +7,7 @@ public class IntegracionTest {
 	@Test
 	public void partidoMasVotadoEnUnaProvincia(){
 		JuntaElectoral junta = new JuntaElectoral();
-		Provincia tucuman = new Provincia();
+		Provincia tucuman = new Provincia("Tucuman");
 		Partido rojo = new Partido("Rojo");
 		Partido azul = new Partido("Azul");
 		Candidato jose = new Candidato("Jose");
@@ -31,7 +31,7 @@ public class IntegracionTest {
 	@Test
 	public void candidatoMasVotadoEnUnaProvincia(){
 		JuntaElectoral junta = new JuntaElectoral();
-		Provincia tucuman = new Provincia();
+		Provincia tucuman = new Provincia("Tucuman");
 		Partido rojo = new Partido("Rojo");
 		Partido azul = new Partido("Azul");
 		Candidato jose = new Candidato("Jose");
@@ -54,8 +54,8 @@ public class IntegracionTest {
 	@Test
 	public void candidatoMasVotadoConMasDeUnaProvincia(){
 		JuntaElectoral junta = new JuntaElectoral();
-		Provincia tucuman = new Provincia();
-		Provincia jujuy = new Provincia();
+		Provincia tucuman = new Provincia("Tucuman");
+		Provincia jujuy = new Provincia("Jujuy");
 		Partido rojo = new Partido("Rojo");
 		Partido azul = new Partido("Azul");
 		Candidato jose = new Candidato("Jose");
@@ -84,8 +84,8 @@ public class IntegracionTest {
 	@Test
 	public void cantidadDeVotosDeUnCandidatoEnVariasProvincias(){
 		JuntaElectoral junta = new JuntaElectoral();
-		Provincia tucuman = new Provincia();
-		Provincia jujuy = new Provincia();
+		Provincia tucuman = new Provincia("Tucuman");
+		Provincia jujuy = new Provincia("Jujuy");
 		Partido rojo = new Partido("Rojo");
 		Partido azul = new Partido("Azul");
 		Candidato jose = new Candidato("Jose");
@@ -115,8 +115,8 @@ public class IntegracionTest {
 	@Test
 	public void cantidadDeVotosDeUnCandidatoEnUnaProvincia(){
 		JuntaElectoral junta = new JuntaElectoral();
-		Provincia tucuman = new Provincia();
-		Provincia jujuy = new Provincia();
+		Provincia tucuman = new Provincia("Tucuman");
+		Provincia jujuy = new Provincia("Jujuy");
 		Partido rojo = new Partido("Rojo");
 		Partido azul = new Partido("Azul");
 		Candidato jose = new Candidato("Jose");
