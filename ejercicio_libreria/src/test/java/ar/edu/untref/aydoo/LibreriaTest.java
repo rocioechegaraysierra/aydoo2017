@@ -178,7 +178,7 @@ public class LibreriaTest {
 		
 		libreria.agregarCliente(carlos);
 		
-		double costo = libreria.calcularMontoTotal(1, 2017, carlos);
+		double costo = libreria.calcularMontoACobrar(1, 2017, carlos);
 		
 		Assert.assertEquals(311.0, costo, 0.1);
 	}
@@ -200,7 +200,7 @@ public class LibreriaTest {
 		
 		libreria.agregarCliente(carlos);
 		
-		double costo = libreria.calcularMontoTotal(3, 2017, carlos);
+		double costo = libreria.calcularMontoACobrar(3, 2017, carlos);
 		
 		Assert.assertEquals(30.0, costo, 0.1);
 	}
@@ -221,7 +221,7 @@ public class LibreriaTest {
 		juan.agregarCompra(hobbit);
 		
 		
-		double costo = libreria.calcularMontoTotal(8, 2017, juan);
+		double costo = libreria.calcularMontoACobrar(8, 2017, juan);
 		
 		Assert.assertEquals(92.1, costo, 0.1);
 	}
@@ -237,7 +237,7 @@ public class LibreriaTest {
 		maria.agregarCompra(pagina12);
 		
 		
-		double costo = libreria.calcularMontoTotal(1, 2017, maria);
+		double costo = libreria.calcularMontoACobrar(1, 2017, maria);
 		
 		Assert.assertEquals(44.0, costo, 0.1);
 	}
