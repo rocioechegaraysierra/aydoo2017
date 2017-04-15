@@ -1,4 +1,6 @@
 
+//Tipo de Objeto: Value Object
+
 public abstract class Producto {
 
 	double precio;

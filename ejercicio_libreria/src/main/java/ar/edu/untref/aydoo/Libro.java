@@ -1,4 +1,6 @@
 
+//Tipo de Objeto: Entidad
+
 public class Libro extends Producto{
 	
 	String autor;

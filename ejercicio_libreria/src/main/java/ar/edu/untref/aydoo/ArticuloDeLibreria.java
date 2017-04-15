@@ -1,3 +1,4 @@
+//Tipo de Objeto: Entidad
 
 public class ArticuloDeLibreria extends Producto{
 

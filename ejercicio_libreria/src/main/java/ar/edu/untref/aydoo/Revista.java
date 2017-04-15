@@ -1,4 +1,6 @@
 
+//Tipo de Objeto: Entidad
+
 public class Revista extends Suscripcion{
 	
 	public Revista(String nombre, double precio, int cantidadDeEjemplaresEnUnMes, boolean suscripcionAnual, int mes, int anio){

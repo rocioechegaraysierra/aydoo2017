@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+//Tipo de Objeto: Servicio
 
 public class Libreria {
 	List<Cliente> clientes;

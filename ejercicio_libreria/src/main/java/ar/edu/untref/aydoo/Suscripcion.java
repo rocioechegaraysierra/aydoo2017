@@ -1,4 +1,6 @@
 
+//Tipo de Objeto: deberia ser Value Object
+
 public class Suscripcion extends Producto{
 
 	int cantidadDeEjemplaresEnUnMes;
