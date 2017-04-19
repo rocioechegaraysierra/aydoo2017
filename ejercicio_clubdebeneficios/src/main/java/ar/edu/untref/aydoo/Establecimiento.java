@@ -5,14 +5,12 @@ import java.util.List;
 
 public class Establecimiento {
 
-	public List <Producto> productos;
+
 	private List<Sucursal> sucursales;
 	private String nombre;
 	
 
 	public Establecimiento(){
-		
-		this.productos= new ArrayList<Producto>();
 		this.sucursales= new ArrayList<Sucursal>();
 	}
 
@@ -35,10 +33,7 @@ public class Establecimiento {
 		return cantidadTotal;
 	}
 
-	public List<Producto> getProductos() {
-		return productos;
-	}
-	
+
 	public void agregarSucursal(Sucursal sucursal){
 		this.sucursales.add(sucursal);
 	}

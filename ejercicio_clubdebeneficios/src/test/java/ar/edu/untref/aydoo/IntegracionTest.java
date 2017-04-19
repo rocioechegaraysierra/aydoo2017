@@ -342,6 +342,7 @@ public class IntegracionTest {
 		Assert.assertEquals(detalle, club.reporteDeClientes());
 		
 	}
+		
 	
 	@Test
 	public void reporteDosClientesYSoloUnoRealizaUnaCompra() throws ExcepcionDescuento{
