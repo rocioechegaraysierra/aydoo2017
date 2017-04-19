@@ -1,0 +1,8 @@
+-Establecimiento deberia tener un listado de productos, poder crearlos y agregarlos a su lista.
+-Se deberia inicializar el establecimiento con un nombre.
+-Se asume que una tarjeta puede tener un beneficio.
+-El Club de Beneficios tiene una lista de tarjetas en el caso en el que en el futuro cree mas tarjetas.
+-No cumple con el principio solid de "Single-Responsiblity" en el método "compra" del Club de Beneficios.
+-Los atributos en la clase "Cliente" deben ser privados con sus respectivos getters.
+-No se encuentra implementado la funcionalidad del 2x1.
+-Creacion de una excepcion propia para poder determinar con exactitud la excepcion. Puede realizarse con un IllegalArgumentException.
