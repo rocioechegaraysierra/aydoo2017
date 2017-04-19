@@ -6,3 +6,4 @@
 -Los atributos en la clase "Cliente" deben ser privados con sus respectivos getters.
 -No se encuentra implementado la funcionalidad del 2x1.
 -Creacion de una excepcion propia para poder determinar con exactitud la excepcion. Puede realizarse con un IllegalArgumentException.
+-En el caso de querer agregar el mismo beneficio para dos tarjetas debe agregarse individualmente en cada una.
