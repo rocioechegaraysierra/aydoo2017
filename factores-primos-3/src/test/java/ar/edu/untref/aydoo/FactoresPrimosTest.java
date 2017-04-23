@@ -182,5 +182,15 @@ public class FactoresPrimosTest {
 		FactoresPrimos.main(argumentos);
 	}
 	
+	@Test
+	public void factoresDe14ConFormatoPrettyConSortVacio(){
+		String[]argumentos={"14", "--format=pretty"};
+		FactoresPrimos.main(argumentos);
+	}
 	
+	@Test
+	public void factoresDe14ConFormatoQuietConSortVacio(){
+		String[]argumentos={"14", "--format=quiet"};
+		FactoresPrimos.main(argumentos);
+	}
 }
