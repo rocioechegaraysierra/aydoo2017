@@ -3,6 +3,7 @@ import org.junit.Test;
 
 public class FactoresPrimosTest {
 
+	
 
 	
 	@Test
@@ -168,13 +169,18 @@ public class FactoresPrimosTest {
 		FactoresPrimos.main(argumentos);
 	}
 	
+	
 	@Test
 	public void factoresDe7787ConFormatoPrettyDescendente(){
 		String[]argumentos={"7787", "--format=pretty", "--sort=des"};
 		FactoresPrimos.main(argumentos);
 	}
 	
+	@Test
+	public void factoresDe14ConFormatoIncorrecto(){
+		String[]argumentos={"14","--format=Yerba", "--sort=des"};
+		FactoresPrimos.main(argumentos);
+	}
 	
-
 	
 }

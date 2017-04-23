@@ -13,40 +13,46 @@ public class FactoresPrimos {
 		
 		int numero=Integer.parseInt(args[0]);
 		
-			
-		
-		if(estaEnFormatoDescendente(args)){
-			if(estaEnFormatoPretty(args)){
-				factoresPrimosPretty(numero);
-				prettyDescendente();
-			}else {
-				factoresPrimosQuiet(numero);
-				quietDescendente();
-			}
-		}else if(estaEnFormatoAscendente(args)){
-			
-			if(estaEnFormatoPretty(args)){
+		if(estaEnFormatoPretty(args)){
+			if(estaEnFormatoAscendente(args)){
 				factoresPrimosPretty(numero);
 				prettyAscendente();
 			}else{
+				factoresPrimosPretty(numero);
+				prettyDescendente();
+			}
+		}else if(estaEnFormatoQuiet(args)){
+			if(estaEnFormatoAscendente(args)){
 				factoresPrimosQuiet(numero);
 				quietAscendente();
-				
-				
+			}else{
+				factoresPrimosQuiet(numero);
+				quietDescendente();
 			}
-		
+		}else if(estaEnFormatoIncorrecto(args)){
+			System.out.print("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
 		}
-		
+				
+	}
+
+
+	private static boolean estaEnFormatoIncorrecto(String[] args) {
+		return (args[1].toLowerCase().equals("--format=pretty") &&
+				args[1].toLowerCase().equals("--format=quiet"));
 	}
 
 
 	private static boolean estaEnFormatoPretty(String[] args) {
 		return args[1].toLowerCase().equals("--format=pretty");
 	}
+	
+	private static boolean estaEnFormatoQuiet(String[] args) {
+		return args[1].toLowerCase().equals("--format=quiet");
+	}
 
 
 	private static boolean estaEnFormatoAscendente(String[] args) {
-		return args[2].toLowerCase().equals("--sort=asc");
+		return (args[2].toLowerCase().equals("--sort=asc") || args[1].toLowerCase().equals("--sort=asc"));
 	}
 
 
