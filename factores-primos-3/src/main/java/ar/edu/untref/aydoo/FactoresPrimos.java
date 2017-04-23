@@ -13,19 +13,19 @@ public class FactoresPrimos {
 		
 		int numero=Integer.parseInt(args[0]);
 		
+			
 		
-		
-		if(args[2].toLowerCase().equals("--sort=des")){
-			if(args[1].toLowerCase().equals("--format=pretty")){
+		if(estaEnFormatoDescendente(args)){
+			if(estaEnFormatoPretty(args)){
 				factoresPrimosPretty(numero);
 				prettyDescendente();
 			}else {
 				factoresPrimosQuiet(numero);
 				quietDescendente();
 			}
-		}else {
+		}else if(estaEnFormatoAscendente(args)){
 			
-			if(args[1].toLowerCase().equals("--format=pretty")){
+			if(estaEnFormatoPretty(args)){
 				factoresPrimosPretty(numero);
 				prettyAscendente();
 			}else{
@@ -34,8 +34,24 @@ public class FactoresPrimos {
 				
 				
 			}
+		
 		}
 		
+	}
+
+
+	private static boolean estaEnFormatoPretty(String[] args) {
+		return args[1].toLowerCase().equals("--format=pretty");
+	}
+
+
+	private static boolean estaEnFormatoAscendente(String[] args) {
+		return args[2].toLowerCase().equals("--sort=asc");
+	}
+
+
+	private static boolean estaEnFormatoDescendente(String[] args) {
+		return args[2].toLowerCase().equals("--sort=des");
 	}
 	
 	
