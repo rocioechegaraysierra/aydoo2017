@@ -13,17 +13,24 @@ public class FactoresPrimos {
 		
 		int numero=Integer.parseInt(args[0]);
 		
+		
 		if(estaEnFormatoPretty(args)){
 			
 			if(noHayFormatoSort(args)){
 				factoresPrimosPretty(numero);
 				prettyAscendente();
+				
 			}else if(estaEnFormatoAscendente(args)){
-				factoresPrimosPretty(numero);
-				prettyAscendente();
+				if(noHayArchivo(args)){
+					factoresPrimosPretty(numero);
+					prettyAscendente();
+					
+				}
 			}else{
-				factoresPrimosPretty(numero);
+				if(noHayArchivo(args)){
+				factoresPrimosPretty(numero); 
 				prettyDescendente();
+				}
 			
 			}
 		}else if(estaEnFormatoQuiet(args)){
@@ -31,8 +38,11 @@ public class FactoresPrimos {
 				factoresPrimosQuiet(numero);
 				prettyAscendente();
 			} else if(estaEnFormatoAscendente(args)){
-				factoresPrimosQuiet(numero);
-				quietAscendente();
+				
+					factoresPrimosQuiet(numero);
+					quietAscendente();
+					
+				
 			}else{
 				factoresPrimosQuiet(numero);
 				quietDescendente();
@@ -40,12 +50,21 @@ public class FactoresPrimos {
 		}else if(estaEnFormatoIncorrecto(args)){
 			System.out.print("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
 		}
+			
+	
 				
 	}
 
 
+	private static boolean noHayArchivo(String[] args) {
+		return (args.length == 3);
+	}
+
+
+
+
 	private static boolean noHayFormatoSort(String[] args) {
-		return (args.length == 2);
+		return (args.length == 2 || args.length == 1);
 	}
 
 

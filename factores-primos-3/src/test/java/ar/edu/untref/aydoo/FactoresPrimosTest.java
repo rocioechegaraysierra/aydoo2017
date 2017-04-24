@@ -193,4 +193,21 @@ public class FactoresPrimosTest {
 		String[]argumentos={"14", "--format=quiet"};
 		FactoresPrimos.main(argumentos);
 	}
+	
+	
+	
+	@Test
+	public void factoresDe14ConFormatoPrettyAscendenteSinArchivo(){
+		String[]argumentos={"14", "--format=pretty", "--sort=asc"};
+		FactoresPrimos.main(argumentos);
+	}
+	
+	@Test
+	public void factoresDe14ConFormatoPrettyDescendenteSinArchivo(){
+		String[]argumentos={"14", "--format=pretty", "--sort=des"};
+		FactoresPrimos.main(argumentos);
+	}
+	
+	
+	
 }
