@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,7 +10,7 @@ public class FactoresPrimos {
 	
 	static List<Integer> divisores;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		divisores = new ArrayList<Integer>();
 		
@@ -17,35 +20,50 @@ public class FactoresPrimos {
 		if(estaEnFormatoPretty(args)){
 			
 			if(noHayFormatoSort(args)){
-				factoresPrimosPretty(numero);
-				prettyAscendente();
+				
+					factoresPrimos(numero);
+					prettyAscendente(numero);
+					
 				
 			}else if(estaEnFormatoAscendente(args)){
 				if(noHayArchivo(args)){
-					factoresPrimosPretty(numero);
-					prettyAscendente();
+					factoresPrimos(numero);
+					prettyAscendente(numero);
 					
+				}else if(hayArchivo(args)){
+					factoresPrimos(numero);
+					archivoPrettyAscendente(numero);
 				}
+				
 			}else{
 				if(noHayArchivo(args)){
-				factoresPrimosPretty(numero); 
-				prettyDescendente();
+					factoresPrimos(numero); 
+					prettyDescendente(numero);
+				
+				
+				}else if(hayArchivo(args)){
+					factoresPrimos(numero);
+					archivoPrettyDescendente(numero);
 				}
 			
 			}
 		}else if(estaEnFormatoQuiet(args)){
+			
 			if(noHayFormatoSort(args)){
-				factoresPrimosQuiet(numero);
-				prettyAscendente();
+				factoresPrimos(numero);
+				prettyAscendente(numero);
+			
+			
 			} else if(estaEnFormatoAscendente(args)){
 				if(noHayArchivo(args)){
-					factoresPrimosQuiet(numero);
+					factoresPrimos(numero);
 					quietAscendente();
+				
 				}
-
+				
 			}else{
 				if(noHayArchivo(args)){
-					factoresPrimosQuiet(numero);
+					factoresPrimos(numero);
 					quietDescendente();
 				}
 			}
@@ -54,19 +72,19 @@ public class FactoresPrimos {
 		}else{
 			
 			if(noHayFormatoSort(args)){
-				factoresPrimosPretty(numero);
-				prettyAscendente();
+				factoresPrimos(numero);
+				prettyAscendente(numero);
 				
 			}else if(estaEnFormatoAscendente(args)){
 				if(noHayArchivo(args)){
-					factoresPrimosPretty(numero);
-					prettyAscendente();
+					factoresPrimos(numero);
+					prettyAscendente(numero);
 					
 				}
 			}else{
 				if(noHayArchivo(args)){
-				factoresPrimosPretty(numero); 
-				prettyDescendente();
+				factoresPrimos(numero); 
+				prettyDescendente(numero);
 				}
 			
 			}
@@ -75,13 +93,38 @@ public class FactoresPrimos {
 			
 	}
 
+	private static void archivoPrettyDescendente(int numero) throws IOException {
+		File archivo=new File("salida.txt");
+		FileWriter escribir=new FileWriter(archivo,true);
+		escribir.write("Factores primos "+numero+" : ");
+		Collections.reverse(divisores);
+		for (int i = 0; i < divisores.size(); i++) {
+			escribir.write((divisores.get(i)+" ")); 
+		}
+		escribir.close();
+		
+	}
+
+
+	private static void archivoPrettyAscendente(int numero) throws IOException {
+		File archivo=new File("salida.txt");
+		FileWriter escribir=new FileWriter(archivo,true);
+		escribir.write("Factores primos "+numero+" : ");
+		for (int i = 0; i < divisores.size(); i++) {
+			escribir.write((divisores.get(i)+" ")); 
+		}
+		escribir.close();
+	}
+
+
+	private static boolean hayArchivo(String[] args) {
+		return args[3].toLowerCase().equals("--output-file=salida.txt");
+	}
+
 
 	private static boolean noHayArchivo(String[] args) {
 		return (args.length == 3);
 	}
-
-
-
 
 	private static boolean noHayFormatoSort(String[] args) {
 		return (args.length == 2 || args.length == 1);
@@ -112,26 +155,8 @@ public class FactoresPrimos {
 		return args[2].toLowerCase().equals("--sort=des") || args[1].toLowerCase().equals("--sort=des");
 	}
 	
-	
-	static void factoresPrimosPretty(int numero){
-		int divisor=2;
+	private static void prettyAscendente(int numero) {
 		System.out.print("Factores primos "+numero+" : ");
-		if(numero > 1){ 
-			for(int i = 0; i <= numero; i++) { 
-				if (numero % divisor == 0) { 
-					divisores.add(divisor); 
-					numero = numero/divisor; 
-				}else{ 
-					divisor++; 
-				} 
-			}
-		} 
-		
-			
-	}
-
-
-	private static void prettyAscendente() {
 		for (int i = 0; i < divisores.size(); i++) {
 			System.out.print(divisores.get(i)+" "); 
 		}
@@ -139,7 +164,8 @@ public class FactoresPrimos {
 	}
 	
 
-	private static void prettyDescendente() {
+	private static void prettyDescendente(int numero) {
+		System.out.print("Factores primos "+numero+" : ");
 		Collections.reverse(divisores);
 		for (int i = 0; i < divisores.size(); i++) {
 			System.out.print(divisores.get(i)+" "); 
@@ -147,7 +173,7 @@ public class FactoresPrimos {
 		System.out.println();
 	}
 	
-	static void factoresPrimosQuiet(int numero){
+	static void factoresPrimos(int numero){
 		int divisor=2;
 		if(numero > 1){ 
 			for (int i = 0; i <= numero; i++) { 
@@ -170,7 +196,6 @@ public class FactoresPrimos {
 	}
 	
 	private static void quietAscendente() {
-	
 		for (int i = 0; i < divisores.size(); i++) {
 			System.out.println(divisores.get(i)); 
 		}
