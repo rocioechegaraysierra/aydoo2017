@@ -1,3 +1,5 @@
+package ar.edu.untref.aydoo;
+
 import java.io.IOException;
 
 import org.junit.Test;
@@ -195,8 +197,7 @@ public class FactoresPrimosTest {
 		String[]argumentos={"14", "--format=quiet"};
 		FactoresPrimos.main(argumentos);
 	}
-	
-	
+
 	
 	@Test
 	public void factoresDe14ConFormatoPrettyAscendenteSinArchivo() throws IOException{
@@ -246,9 +247,5 @@ public class FactoresPrimosTest {
 		FactoresPrimos.main(argumentos);
 	}
 	
-	
-	
-
-
 	
 }
