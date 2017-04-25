@@ -38,14 +38,16 @@ public class FactoresPrimos {
 				factoresPrimosQuiet(numero);
 				prettyAscendente();
 			} else if(estaEnFormatoAscendente(args)){
-				
+				if(noHayArchivo(args)){
 					factoresPrimosQuiet(numero);
 					quietAscendente();
-					
-				
+				}
+
 			}else{
-				factoresPrimosQuiet(numero);
-				quietDescendente();
+				if(noHayArchivo(args)){
+					factoresPrimosQuiet(numero);
+					quietDescendente();
+				}
 			}
 		}else if(estaEnFormatoIncorrecto(args)){
 			System.out.print("Formato no aceptado. Las opciones posibles son: pretty o quiet.");

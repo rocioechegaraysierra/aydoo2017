@@ -208,6 +208,16 @@ public class FactoresPrimosTest {
 		FactoresPrimos.main(argumentos);
 	}
 	
+	@Test
+	public void factoresDe14ConFormatoQuietAscendenteSinArchivo(){
+		String[]argumentos={"14", "--format=quiet", "--sort=asc"};
+		FactoresPrimos.main(argumentos);
+	}
 	
+	@Test
+	public void factoresDe14ConFormatoQuietDescendenteSinArchivo(){
+		String[]argumentos={"14", "--format=quiet", "--sort=des"};
+		FactoresPrimos.main(argumentos);
+	}
 	
 }
