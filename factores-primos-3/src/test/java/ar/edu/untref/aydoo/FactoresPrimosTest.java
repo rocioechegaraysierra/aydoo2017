@@ -220,4 +220,17 @@ public class FactoresPrimosTest {
 		FactoresPrimos.main(argumentos);
 	}
 	
+	@Test
+	public void factoresDe14SinFormatoSortAscendenteSinArchivo(){
+		String[]argumentos={"14",  "--sort=asc"};
+		FactoresPrimos.main(argumentos);
+	}
+	
+	@Test
+	public void factoresDe14SinFormatoSortDescendenteSinArchivo(){
+		String[]argumentos={"14",  "--sort=des"};
+		FactoresPrimos.main(argumentos);
+	}
+
+	
 }

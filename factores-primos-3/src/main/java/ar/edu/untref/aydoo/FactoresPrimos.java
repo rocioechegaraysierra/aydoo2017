@@ -51,10 +51,28 @@ public class FactoresPrimos {
 			}
 		}else if(estaEnFormatoIncorrecto(args)){
 			System.out.print("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
+		}else{
+			
+			if(noHayFormatoSort(args)){
+				factoresPrimosPretty(numero);
+				prettyAscendente();
+				
+			}else if(estaEnFormatoAscendente(args)){
+				if(noHayArchivo(args)){
+					factoresPrimosPretty(numero);
+					prettyAscendente();
+					
+				}
+			}else{
+				if(noHayArchivo(args)){
+				factoresPrimosPretty(numero); 
+				prettyDescendente();
+				}
+			
+			}
 		}
 			
-	
-				
+			
 	}
 
 
@@ -91,7 +109,7 @@ public class FactoresPrimos {
 
 
 	private static boolean estaEnFormatoDescendente(String[] args) {
-		return args[2].toLowerCase().equals("--sort=des");
+		return args[2].toLowerCase().equals("--sort=des") || args[1].toLowerCase().equals("--sort=des");
 	}
 	
 	
