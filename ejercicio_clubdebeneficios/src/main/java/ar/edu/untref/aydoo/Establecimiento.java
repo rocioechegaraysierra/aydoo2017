@@ -1,20 +1,21 @@
+package ar.edu.untref.aydoo;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
 public class Establecimiento {
 
-
+	
 	private List<Sucursal> sucursales;
 	private String nombre;
 	
 
 	public Establecimiento(){
-		this.sucursales= new ArrayList<Sucursal>();
+		this.sucursales = new ArrayList<Sucursal>();
 	}
 
-	public void setNombre(String nombre) {
+	public void setNombre (String nombre) {
 		this.nombre = nombre;
 	}
 	
@@ -24,45 +25,42 @@ public class Establecimiento {
 
 
 	public int getCantidadTotalDeVentasDelEstablecimiento() {
-		int cantidadTotal=0;
+		int cantidadTotal = 0;
 		Iterator<Sucursal> itSucursal = this.sucursales.iterator();
-		while(itSucursal.hasNext()){
+		while (itSucursal.hasNext()) {
 			Sucursal sucursal = itSucursal.next();
-			cantidadTotal+= sucursal.getCantidadDeVentas();
+			cantidadTotal += sucursal.getCantidadDeVentas();
 		}
 		return cantidadTotal;
 	}
 
 
-	public void agregarSucursal(Sucursal sucursal){
+	public void agregarSucursal (Sucursal sucursal) {
 		this.sucursales.add(sucursal);
 	}
 	
-	public void comprar(Sucursal sucursalDeCompra){
+	public void comprar (Sucursal sucursalDeCompra) {
 		Iterator<Sucursal> itSucursal = this.sucursales.iterator();
-		while(itSucursal.hasNext()){
+		while (itSucursal.hasNext()) {
 			Sucursal sucursal = itSucursal.next();
-			if(sucursal == sucursalDeCompra ){
+			if (sucursal == sucursalDeCompra ) {
 				sucursal.comprar();
 			}
-			
 		}
 	}
 	
 	public Sucursal sucursalConMasVentas(){
 		Sucursal sucursalConMasVentas = new Sucursal();
-		int cantidadDeVentas=0;
+		int cantidadDeVentas = 0;
 		Iterator<Sucursal> itSucursal = this.sucursales.iterator();
-		while(itSucursal.hasNext()){
+		while (itSucursal.hasNext()) {
 			Sucursal sucursal = itSucursal.next();
-			if(sucursal.getCantidadDeVentas() > cantidadDeVentas ){
+			if (sucursal.getCantidadDeVentas() > cantidadDeVentas ) {
 				sucursalConMasVentas=sucursal;
-				cantidadDeVentas= sucursal.getCantidadDeVentas();
+				cantidadDeVentas = sucursal.getCantidadDeVentas();
 			}
 			
 		}
 		return sucursalConMasVentas;
 	}
-	
-	
 }

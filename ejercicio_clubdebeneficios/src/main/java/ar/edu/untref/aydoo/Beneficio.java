@@ -1,8 +1,9 @@
+package ar.edu.untref.aydoo;
 
 public class Beneficio {
 	
-private int porcentaje;
-
+	private int porcentaje;
+	
 	public void agregarDatosDelBeneficio(int porcentaje) throws ExcepcionDescuento{
 		if(porcentaje > 5){
 			this.porcentaje=porcentaje;

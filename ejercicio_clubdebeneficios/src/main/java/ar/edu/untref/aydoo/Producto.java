@@ -1,6 +1,9 @@
+package ar.edu.untref.aydoo;
+
+
 
 public class Producto {
-
+	
 	private double precio;
 	private String nombre;
 	
@@ -8,11 +11,11 @@ public class Producto {
 		this.nombre=nombre;
 		this.precio=precio;
 	}
-
+	
 	public double getPrecio() {
 		return precio;
 	}
-
+	
 	public String getNombre() {
 		return nombre;
 	}

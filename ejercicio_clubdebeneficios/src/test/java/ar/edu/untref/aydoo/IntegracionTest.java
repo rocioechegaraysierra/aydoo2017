@@ -1,3 +1,5 @@
+package ar.edu.untref.aydoo;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +9,18 @@ import org.junit.Test;
 
 
 public class IntegracionTest {
+	
+	@Test
+	public void establecimientoConMasBeneficiosSinCompras(){
+		ClubDeBeneficios club = new ClubDeBeneficios();
+		Establecimiento heladeria = new Establecimiento();
+		club.agregarEstablecimiento(heladeria);
+		Sucursal heladeriaFlores= new Sucursal();
+		heladeria.agregarSucursal(heladeriaFlores);
+		
+		Assert.assertEquals(null, club.establecimientoConMasBeneficios());
+		
+	}
 
 	@Test
 	public void establecimientoConMasBeneficiosUnSoloEstablecimientoConMasBeneficios(){

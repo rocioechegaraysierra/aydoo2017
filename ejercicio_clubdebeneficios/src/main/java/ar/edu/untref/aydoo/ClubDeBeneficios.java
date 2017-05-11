@@ -1,3 +1,5 @@
+package ar.edu.untref.aydoo;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -49,11 +51,11 @@ public class ClubDeBeneficios {
 		}
 		
 	}
-
-
-		
 	
-
+	
+	
+	
+	
 	public List<String> reporteDeClientes(){
 		
 		List<String> detalles= new ArrayList<String>();
@@ -68,16 +70,16 @@ public class ClubDeBeneficios {
 				detalles.add(String.valueOf(cliente.preciosConBeneficios.get(0)));
 			}
 		}
-			
-	
+		
+		
 		return detalles;
 	}
 	
 	
 	
 	public Establecimiento establecimientoConMasBeneficios(){
-		Establecimiento establecimientoConMasBeneficios= new Establecimiento();
-		int cantidad=0;
+		Establecimiento establecimientoConMasBeneficios = null;
+		int cantidad = 0;
 		Iterator<Establecimiento> itEstablecimiento = this.establecimientos.iterator();
 		while(itEstablecimiento.hasNext()){
 			Establecimiento establecimiento= itEstablecimiento.next();
@@ -103,5 +105,5 @@ public class ClubDeBeneficios {
 		return sucursalConMasVentas;
 	}
 	
-
+	
 }

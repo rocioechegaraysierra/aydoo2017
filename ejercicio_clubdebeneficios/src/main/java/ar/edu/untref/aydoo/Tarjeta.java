@@ -1,13 +1,14 @@
+package ar.edu.untref.aydoo;
 
 
 public class Tarjeta {
-
+	
 	private Beneficio beneficio;
 	private CategoriaDeLaTarjeta categoria;
 	
 	public Tarjeta(CategoriaDeLaTarjeta categoria){
-		this.beneficio= null;
-		this.categoria=categoria;
+		this.beneficio = null;
+		this.categoria = categoria;
 	}
 	
 	public CategoriaDeLaTarjeta getCategoria() {
@@ -15,12 +16,13 @@ public class Tarjeta {
 	}
 	
 	public void agregarBeneficio(Beneficio beneficio){
-		this.beneficio=beneficio;
+		this.beneficio = beneficio;
 	}
-
+	
 	public Beneficio getBeneficio() {
 		return this.beneficio;
 	}
 	
-		
+	
 }
+
