@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class FactoresPrimosTest {
 
-	
+
 	
 	@Test
 	public void factoresDe14ConFormatoPrettyConSortVacio() throws IOException{
@@ -165,7 +165,6 @@ public class FactoresPrimosTest {
 		FactoresPrimos.main(argumentos);
 	}
 	
-
 
 	
 	
