@@ -7,35 +7,19 @@ import org.junit.Test;
 
 public class FactoresPrimosTest {
 
+	@Test
+	public void factoresDe14ConFormatoPrettyConSortVacio() throws IOException{
+		String[]argumentos={"14", "--format=pretty"};
+		FactoresPrimos.main(argumentos);
+	}
 	
+	@Test
+	public void factoresDe14ConFormatoQuietConSortVacio() throws IOException{
+		String[]argumentos={"14", "--format=quiet"};
+		FactoresPrimos.main(argumentos);
+	}
 
-	
-	@Test
-	public void factoresDe25ConFormatoQuietAscendente() throws IOException{
-		String[]argumentos={"25", "--format=quiet", "--sort=asc"};
-		FactoresPrimos.main(argumentos);
-	}
-	
-	@Test
-	public void factoresDe25ConFormatoQuietDescendente() throws IOException{
-		String[]argumentos={"25", "--format=quiet", "--sort=des"};
-		FactoresPrimos.main(argumentos);
-	}
-	
-	@Test
-	public void factoresDe25ConFormatoPrettyAscendente() throws IOException{
-		String[]argumentos={"25", "--format=pretty", "--sort=asc"};
-		FactoresPrimos.main(argumentos);
-	}
-	
-	@Test
-	public void factoresDe25ConFormatoPrettyDescendente() throws IOException{
-		String[]argumentos={"25", "--format=pretty", "--sort=des"};
-		FactoresPrimos.main(argumentos);
-	}
-	
-
-	
+		
 	@Test
 	public void factoresDe14ConFormatoQuietAscendente() throws IOException{
 		String[]argumentos={"14", "--format=quiet", "--sort=asc"};
@@ -47,6 +31,7 @@ public class FactoresPrimosTest {
 		String[]argumentos={"14", "--format=quiet", "--sort=des"};
 		FactoresPrimos.main(argumentos);
 	}
+	
 	@Test
 	public void factoresDe14ConFormatoPrettyAscendente() throws IOException{
 		String[]argumentos={"14", "--format=pretty", "--sort=asc"};
@@ -60,31 +45,6 @@ public class FactoresPrimosTest {
 	}
 	
 	
-	
-	
-	@Test
-	public void factoresDe9ConFormatoQuietAscendente() throws IOException{
-		String[]argumentos={"9", "--format=quiet", "--sort=asc"};
-		FactoresPrimos.main(argumentos);
-	}
-	
-	@Test
-	public void factoresDe9ConFormatoQuietDescendente() throws IOException{
-		String[]argumentos={"9", "--format=quiet", "--sort=des"};
-		FactoresPrimos.main(argumentos);
-	}
-	
-	@Test
-	public void factoresDe95ConFormatoPrettyAscendente() throws IOException{
-		String[]argumentos={"9", "--format=pretty", "--sort=asc"};
-		FactoresPrimos.main(argumentos);
-	}
-	
-	@Test
-	public void factoresDe95ConFormatoPrettyDescendente() throws IOException{
-		String[]argumentos={"9", "--format=pretty", "--sort=asc"};
-		FactoresPrimos.main(argumentos);
-	}
 	
 	@Test
 	public void factoresDe85ConFormatoQuietAscendente() throws IOException{
@@ -180,24 +140,6 @@ public class FactoresPrimosTest {
 		FactoresPrimos.main(argumentos);
 	}
 	
-	@Test
-	public void factoresDe14ConFormatoIncorrecto() throws IOException{
-		String[]argumentos={"14","--format=Yerba", "--sort=des"};
-		FactoresPrimos.main(argumentos);
-	}
-	
-	@Test
-	public void factoresDe14ConFormatoPrettyConSortVacio() throws IOException{
-		String[]argumentos={"14", "--format=pretty"};
-		FactoresPrimos.main(argumentos);
-	}
-	
-	@Test
-	public void factoresDe14ConFormatoQuietConSortVacio() throws IOException{
-		String[]argumentos={"14", "--format=quiet"};
-		FactoresPrimos.main(argumentos);
-	}
-
 	
 	@Test
 	public void factoresDe14ConFormatoPrettyAscendenteSinArchivo() throws IOException{
@@ -223,29 +165,7 @@ public class FactoresPrimosTest {
 		FactoresPrimos.main(argumentos);
 	}
 	
-	@Test
-	public void factoresDe14SinFormatoSortAscendenteSinArchivo() throws IOException{
-		String[]argumentos={"14",  "--sort=asc"};
-		FactoresPrimos.main(argumentos);
-	}
-	
-	@Test
-	public void factoresDe14SinFormatoSortDescendenteSinArchivo() throws IOException{
-		String[]argumentos={"14",  "--sort=des"};
-		FactoresPrimos.main(argumentos);
-	}
-	
-	@Test
-	public void factoresDe14ConFormatoPrettyAscendenteConArchivo() throws IOException{
-		String[]argumentos={"14", "--format=pretty", "--sort=asc", "--output-file=salida.txt"};
-		FactoresPrimos.main(argumentos);
-	}
-	
-	@Test
-	public void factoresDe14ConFormatoPrettyDescendenteConArchivo() throws IOException{
-		String[]argumentos={"14", "--format=pretty", "--sort=des", "--output-file=salida.txt"};
-		FactoresPrimos.main(argumentos);
-	}
+
 	
 	
 }
