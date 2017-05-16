@@ -1,10 +1,8 @@
 package ar.edu.untref.aydoo;
 
-import java.io.File;
-import java.io.FileWriter;
+
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,6 +15,7 @@ public class FactoresPrimos {
 
 	protected static List<Integer> divisores;
 
+
 	/**
 	 * Permite calcular los factores primos en base a los argumentos.
 	 * @param args
@@ -28,12 +27,16 @@ public class FactoresPrimos {
 		int numero = Integer.parseInt(args[0]);
 		factoresPrimos(numero);
 		
-		if(hayOrden(args)){
-			Orden.aplicar(args);
-		}
-		if(hayFormato(args)){
-			Formato.aplicar(numero, args);
-		}
+		if(hayArchivo(args)){
+			Archivo.main(args, numero);
+		}else{
+			if(hayOrden(args)){
+				Orden.aplicar(args);
+			}
+			if(hayFormato(args)){
+				Formato.aplicar(numero, args);
+			}
+	}
 
 	}
 	
@@ -50,16 +53,6 @@ public class FactoresPrimos {
 	}
 	
 
-	private static String devolverParametro (String[]args, String parametro){
-		String param = null;
-		for (int i = 0; i < args.length; i++) {
-			if(args[i]==parametro){
-				param = args[i];
-			}
-		}
-		return param;
-	}
-	
 	
 	private static boolean hayFormato(String[] args) {
 		return (buscarParametro(args, "--format=pretty") || buscarParametro(args, "--format=quiet"));

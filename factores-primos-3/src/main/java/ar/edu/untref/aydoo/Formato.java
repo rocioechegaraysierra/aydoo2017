@@ -1,6 +1,6 @@
 package ar.edu.untref.aydoo;
 
-import java.util.Collections;
+
 
 public class Formato extends FactoresPrimos {
 	

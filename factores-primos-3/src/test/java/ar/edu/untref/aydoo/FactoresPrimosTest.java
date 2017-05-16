@@ -7,6 +7,8 @@ import org.junit.Test;
 
 public class FactoresPrimosTest {
 
+	
+	
 	@Test
 	public void factoresDe14ConFormatoPrettyConSortVacio() throws IOException{
 		String[]argumentos={"14", "--format=pretty"};
@@ -44,8 +46,7 @@ public class FactoresPrimosTest {
 		FactoresPrimos.main(argumentos);
 	}
 	
-	
-	
+		
 	@Test
 	public void factoresDe85ConFormatoQuietAscendente() throws IOException{
 		String[]argumentos={"85", "--format=quiet", "--sort=asc"};
@@ -115,8 +116,7 @@ public class FactoresPrimosTest {
 		FactoresPrimos.main(argumentos);
 	}
 	
-	
-	
+		
 	@Test
 	public void factoresDe7787ConFormatoQuietAscendente() throws IOException{
 		String[]argumentos={"7787", "--format=quiet", "--sort=asc"};
@@ -142,29 +142,30 @@ public class FactoresPrimosTest {
 	
 	
 	@Test
-	public void factoresDe14ConFormatoPrettyAscendenteSinArchivo() throws IOException{
-		String[]argumentos={"14", "--format=pretty", "--sort=asc"};
+	public void factoresDe14ConFormatoPrettyDescendenteConArchivo() throws IOException{
+		String[]argumentos={"14", "--format=pretty", "--sort=des", "--output-file=salida.txt"};
 		FactoresPrimos.main(argumentos);
 	}
 	
 	@Test
-	public void factoresDe14ConFormatoPrettyDescendenteSinArchivo() throws IOException{
-		String[]argumentos={"14", "--format=pretty", "--sort=des"};
+	public void factoresDe14ConFormatoPrettyAscendenteConArchivo() throws IOException{
+		String[]argumentos={"14", "--format=pretty", "--sort=asc", "--output-file=salida.txt"};
 		FactoresPrimos.main(argumentos);
 	}
 	
 	@Test
-	public void factoresDe14ConFormatoQuietAscendenteSinArchivo() throws IOException{
-		String[]argumentos={"14", "--format=quiet", "--sort=asc"};
+	public void factoresDe14ConFormatoQuietAscendenteConArchivo() throws IOException{
+		String[]argumentos={"14", "--format=quiet", "--sort=asc", "--output-file=salida.txt"};
 		FactoresPrimos.main(argumentos);
 	}
 	
 	@Test
-	public void factoresDe14ConFormatoQuietDescendenteSinArchivo() throws IOException{
-		String[]argumentos={"14", "--format=quiet", "--sort=des"};
+	public void factoresDe14ConFormatoQuietDescendenteConArchivo() throws IOException{
+		String[]argumentos={"14", "--format=quiet", "--sort=des", "--output-file=salida.txt"};
 		FactoresPrimos.main(argumentos);
 	}
 	
+
 
 	
 	
