@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ClubDeBeneficios {
 	
-	private List<Cliente> clientes;
+	protected List<Cliente> clientes;
 	private List<Establecimiento> establecimientos;
 	private List<Tarjeta> tarjetas;
 	
@@ -32,30 +32,6 @@ public class ClubDeBeneficios {
 	}
 	
 	
-	public void compra(Establecimiento establecimiento, Sucursal sucursal, Cliente cliente, Producto producto){
-		Iterator<Cliente> itCliente = this.clientes.iterator();
-		while(itCliente.hasNext()){
-			Cliente clienteEncontrado = itCliente.next();
-			if(clienteEncontrado == cliente){
-				clienteEncontrado.agregarDatosDeCompra(establecimiento, producto, clienteEncontrado.getTarjeta());
-			}
-			
-		}
-		
-		Iterator<Establecimiento> itEstablecimiento = this.establecimientos.iterator();
-		while(itEstablecimiento.hasNext()){
-			Establecimiento establecimientoEncontrado= itEstablecimiento.next();
-			if(establecimiento == establecimientoEncontrado){
-				establecimiento.comprar(sucursal);
-			}
-		}
-		
-	}
-	
-	
-	
-	
-	
 	public List<String> reporteDeClientes(){
 		
 		List<String> detalles= new ArrayList<String>();
@@ -63,11 +39,9 @@ public class ClubDeBeneficios {
 		Iterator<Cliente> itCliente= this.clientes.iterator();
 		while(itCliente.hasNext()){
 			Cliente cliente = itCliente.next();
-			if(cliente.realizoCompras()){
-				detalles.add(cliente.establecimientos.get(0).getNombre());
-				detalles.add(String.valueOf(cliente.productos.get(0).getNombre()));
-				detalles.add(String.valueOf(cliente.precios.get(0)));
-				detalles.add(String.valueOf(cliente.preciosConBeneficios.get(0)));
+			if(cliente.isRealizoCompras()){
+				detalles = cliente.imprimirReporte();
+				
 			}
 		}
 		
@@ -81,29 +55,32 @@ public class ClubDeBeneficios {
 		Establecimiento establecimientoConMasBeneficios = null;
 		int cantidad = 0;
 		Iterator<Establecimiento> itEstablecimiento = this.establecimientos.iterator();
-		while(itEstablecimiento.hasNext()){
-			Establecimiento establecimiento= itEstablecimiento.next();
-			if(establecimiento.getCantidadTotalDeVentasDelEstablecimiento() > cantidad){
-				cantidad= establecimiento.getCantidadTotalDeVentasDelEstablecimiento();
-				establecimientoConMasBeneficios=establecimiento;
+		while (itEstablecimiento.hasNext()) {
+			Establecimiento establecimiento = itEstablecimiento.next();
+			if (establecimiento.getCantidadTotalDeVentasDelEstablecimiento() > cantidad) {
+				cantidad = establecimiento.getCantidadTotalDeVentasDelEstablecimiento();
+				establecimientoConMasBeneficios = establecimiento;
 			}
 		}
 		return establecimientoConMasBeneficios;
 	}
 	
 	public Sucursal sucursalQueMasVendio(){
-		Sucursal sucursalConMasVentas = new Sucursal();
+		Sucursal sucursalConMasVentas = null;
 		int cantidad=0;
 		Iterator<Establecimiento> itEstablecimiento = this.establecimientos.iterator();
 		while(itEstablecimiento.hasNext()){
 			Establecimiento establecimiento= itEstablecimiento.next();
-			if(establecimiento.sucursalConMasVentas().getCantidadDeVentas() > cantidad){
-				cantidad= establecimiento.sucursalConMasVentas().getCantidadDeVentas();
+			if(establecimiento.getCantidadTotalDeVentasDelEstablecimiento() > cantidad){
+				cantidad= establecimiento.getCantidadTotalDeVentasDelEstablecimiento();
 				sucursalConMasVentas=establecimiento.sucursalConMasVentas(); 
 			}
 		}
 		return sucursalConMasVentas;
 	}
+	
+	
+	
 	
 	
 }

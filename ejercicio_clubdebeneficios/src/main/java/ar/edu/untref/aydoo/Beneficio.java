@@ -3,11 +3,12 @@ package ar.edu.untref.aydoo;
 public class Beneficio {
 	
 	private int porcentaje;
+	private int porcentajeMinimo=5;
 	
-	public void agregarDatosDelBeneficio(int porcentaje) throws ExcepcionDescuento{
-		if(porcentaje > 5){
-			this.porcentaje=porcentaje;
-		}else{
+	public void agregarDatosDelBeneficio(final int porcentaje) throws ExcepcionDescuento{
+		if (porcentaje > porcentajeMinimo) {
+			this.porcentaje = porcentaje;
+		} else {
 			throw new ExcepcionDescuento("El porcentaje debe ser mayor al 5%");
 		}
 	}

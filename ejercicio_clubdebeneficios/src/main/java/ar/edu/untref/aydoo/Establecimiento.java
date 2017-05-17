@@ -8,7 +8,7 @@ public class Establecimiento {
 
 	
 	private List<Sucursal> sucursales;
-	private String nombre;
+	protected String nombre;
 	
 
 	public Establecimiento(){
@@ -39,18 +39,10 @@ public class Establecimiento {
 		this.sucursales.add(sucursal);
 	}
 	
-	public void comprar (Sucursal sucursalDeCompra) {
-		Iterator<Sucursal> itSucursal = this.sucursales.iterator();
-		while (itSucursal.hasNext()) {
-			Sucursal sucursal = itSucursal.next();
-			if (sucursal == sucursalDeCompra ) {
-				sucursal.comprar();
-			}
-		}
-	}
+
 	
 	public Sucursal sucursalConMasVentas(){
-		Sucursal sucursalConMasVentas = new Sucursal();
+		Sucursal sucursalConMasVentas = null;
 		int cantidadDeVentas = 0;
 		Iterator<Sucursal> itSucursal = this.sucursales.iterator();
 		while (itSucursal.hasNext()) {

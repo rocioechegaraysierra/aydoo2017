@@ -1,15 +1,13 @@
 package ar.edu.untref.aydoo;
 
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 
 public class IntegracionTest {
-	
+
 	@Test
 	public void establecimientoConMasBeneficiosSinCompras(){
 		ClubDeBeneficios club = new ClubDeBeneficios();
@@ -21,7 +19,6 @@ public class IntegracionTest {
 		Assert.assertEquals(null, club.establecimientoConMasBeneficios());
 		
 	}
-
 	@Test
 	public void establecimientoConMasBeneficiosUnSoloEstablecimientoConMasBeneficios(){
 		ClubDeBeneficios club = new ClubDeBeneficios();
@@ -33,12 +30,13 @@ public class IntegracionTest {
 		Producto helado = new Producto("Medio kilo de helado", 80);
 		heladeria.agregarSucursal(heladeriaFlores);
 		
-		club.compra(heladeria, heladeriaFlores, lujan, helado);
+		heladeriaFlores.comprar(heladeria,lujan, tarjetaPremium, helado);
 		
 			
 		Assert.assertEquals(heladeria, club.establecimientoConMasBeneficios());
 		
 	}
+	
 	
 	@Test
 	public void establecimientoConMasBeneficiosDosEstablecimientosYUnoSoloRealizoMasBeneficios(){
@@ -56,9 +54,9 @@ public class IntegracionTest {
 		Sucursal heladeriaFlores= new Sucursal();
 		heladeria.agregarSucursal(heladeriaFlores);
 		
-		club.compra(floreria, floreriaFlores, lujan, rosa);
+		heladeriaFlores.comprar(floreria, lujan, tarjetaPremium, rosa);
 					
-		Assert.assertEquals(floreria, club.establecimientoConMasBeneficios());
+		Assert.assertEquals(heladeria, club.establecimientoConMasBeneficios());
 		
 	}
 	
@@ -90,11 +88,11 @@ public class IntegracionTest {
 		Cliente lucas= new Cliente(tarjetaLucas);
 		Producto carne = new Producto("Medio kilo de carne picada", 80);
 		
-		club.compra(carniceria, carniceriaFlores, lucas, carne);
-		club.compra(heladeria, heladeriaFlores, maria, helado);
-		club.compra(floreria, floreriaFlores, lujan, margarita);
-		club.compra(floreria, floreriaFlores, lujan, rosa);
-		club.compra(floreria, floreriaFlores, lujan, malbon);
+		carniceriaFlores.comprar(carniceria, lucas, tarjetaPremium, carne);
+		heladeriaFlores.comprar(heladeria, maria, tarjetaPremium, helado);
+		floreriaFlores.comprar(floreria, lujan, tarjetaPremium, margarita);
+		floreriaFlores.comprar(floreria, lujan, tarjetaPremium, rosa);
+		floreriaFlores.comprar(floreria, lujan, tarjetaPremium, malbon);
 		
 		Assert.assertEquals(floreria, club.establecimientoConMasBeneficios());
 		
@@ -139,15 +137,15 @@ public class IntegracionTest {
 		Producto matambre = new Producto("Matambre", 40);
 		Producto lomo = new Producto("Matambre", 340);
 		
-		club.compra(heladeria, heladeriaFlores, lucia, cuarto);
-		club.compra(heladeria, heladeriaCaballito, alicia, medio);
-		club.compra(carniceria, carniceriaFlores, pedro, asado);
-		club.compra(carniceria, carniceriaFloresta, mario, matambre);
-		club.compra(carniceria, carniceriaFloresta, mario, lomo);
-		club.compra(floreria, floreriaFlores, maria, petunia);
-		club.compra(floreria, floreriaRosa, maria, rosa);
-		club.compra(floreria, floreriaRosa, maria, margarita);
-		club.compra(floreria, floreriaRosa, maria, malbon);
+		heladeriaFlores.comprar(heladeria, lucia, tarjetaPremium, cuarto);
+		heladeriaCaballito.comprar(heladeria, alicia, tarjetaPremium, medio);
+		carniceriaFlores.comprar(carniceria, pedro, tarjetaPremium, asado);
+		carniceriaFloresta.comprar(carniceria, mario, tarjetaPremium, matambre);
+		carniceriaFloresta.comprar(carniceria, mario, tarjetaPremium, lomo);
+		floreriaFlores.comprar(floreria, maria, tarjetaPremium, petunia);
+		floreriaRosa.comprar(floreria, maria, tarjetaPremium, rosa);
+		floreriaRosa.comprar(floreria, maria, tarjetaPremium, margarita);
+		floreriaRosa.comprar(floreria, maria, tarjetaPremium, malbon);
 		
 		Assert.assertEquals(floreria, club.establecimientoConMasBeneficios());
 		
@@ -161,15 +159,15 @@ public class IntegracionTest {
 		club.agregarEstablecimiento(floreria);
 		Sucursal floreriaFlores= new Sucursal();
 		floreria.agregarSucursal(floreriaFlores);
-		Tarjeta tarjetaMaria= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Cliente maria= new Cliente(tarjetaMaria);
+		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
+		Cliente maria= new Cliente(tarjetaPremium);
 		Producto petunia = new Producto("Petunia", 80);
 		Producto rosa = new Producto("Rosas rojas", 80);
 		Producto margarita = new Producto("Margaritas amarillas", 80);
 		
-		club.compra(floreria, floreriaFlores, maria, petunia);
-		club.compra(floreria, floreriaFlores, maria, rosa);
-		club.compra(floreria, floreriaFlores, maria, margarita);
+		floreriaFlores.comprar(floreria, maria, tarjetaPremium, petunia);
+		floreriaFlores.comprar(floreria, maria, tarjetaPremium, rosa);
+		floreriaFlores.comprar(floreria, maria, tarjetaPremium, margarita);
 		
 		
 		Assert.assertEquals(floreriaFlores, club.sucursalQueMasVendio());
@@ -185,17 +183,17 @@ public class IntegracionTest {
 		Sucursal floreriaRosa= new Sucursal();
 		floreria.agregarSucursal(floreriaRosa);
 		floreria.agregarSucursal(floreriaFlores);
-		Tarjeta tarjetaMaria= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Cliente maria= new Cliente(tarjetaMaria);
+		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
+		Cliente maria= new Cliente(tarjetaPremium);
 		Producto petunia = new Producto("Petunia", 80);
 		Producto rosa = new Producto("Rosas rojas", 80);
 		Producto margarita = new Producto("Margaritas amarillas", 80);
 		Producto malbon = new Producto("Malbon verde", 80);
 		
-		club.compra(floreria, floreriaFlores, maria, rosa);
-		club.compra(floreria, floreriaRosa, maria, petunia);
-		club.compra(floreria, floreriaRosa, maria, margarita);
-		club.compra(floreria, floreriaRosa, maria, malbon);
+		floreriaFlores.comprar(floreria, maria, tarjetaPremium, rosa);
+		floreriaRosa.comprar(floreria, maria, tarjetaPremium, petunia);
+		floreriaRosa.comprar(floreria, maria, tarjetaPremium, margarita);
+		floreriaRosa.comprar(floreria, maria, tarjetaPremium,malbon);
 		
 		Assert.assertEquals(floreriaRosa, club.sucursalQueMasVendio());
 		
@@ -226,11 +224,11 @@ public class IntegracionTest {
 		Cliente martin= new Cliente(tarjetaPremium);
 		Producto asado = new Producto("Asado", 80);
 		
-		club.compra(heladeria, heladeriaFlores, lucas, helado);
-		club.compra(carniceria, carniceriaFlores, martin, asado);
-		club.compra(floreria, floreriaFlores, maria, margarita);
-		club.compra(floreria, floreriaFlores, maria, rosa);
-		club.compra(floreria, floreriaFlores, maria, petunia);
+		heladeriaFlores.comprar(heladeria, lucas, tarjetaPremium, helado);
+		carniceriaFlores.comprar(carniceria, martin,tarjetaPremium, asado);
+		floreriaFlores.comprar(floreria, maria, tarjetaPremium, margarita);
+		floreriaFlores.comprar(floreria, maria, tarjetaPremium, rosa);
+		floreriaFlores.comprar(floreria, maria, tarjetaPremium, petunia);
 		Assert.assertEquals(floreriaFlores, club.sucursalQueMasVendio());
 		
 	}
@@ -273,122 +271,19 @@ public class IntegracionTest {
 		Producto lomo = new Producto("Lomo", 80);
 		Producto matambre = new Producto("Matambre", 80);
 		
-		club.compra(heladeria, heladeriaCaballito, mario, kilo);		
-		club.compra(heladeria, heladeriaFlores, lucas, cono);
-		club.compra(carniceria, carniceriaFlores, juan, asado);
-		club.compra(carniceria, carniceriaFloresta, mariana, lomo);
-		club.compra(carniceria, carniceriaFloresta, mariana, matambre );
-		club.compra(floreria, floreriaFlores, maria, rosa);
-		club.compra(floreria, floreriaRosa, maria, petunia);
-		club.compra(floreria, floreriaRosa, maria, margarita);
-		club.compra(floreria, floreriaRosa, maria, malbon);
+		heladeriaCaballito.comprar(heladeria, mario, tarjetaPremium, kilo);		
+		heladeriaFlores.comprar(heladeria, lucas, tarjetaPremium, cono);
+		carniceriaFlores.comprar(carniceria, juan, tarjetaPremium, asado);
+		carniceriaFloresta.comprar(carniceria, mariana, tarjetaPremium, lomo);
+		carniceriaFloresta.comprar(carniceria, mariana, tarjetaPremium, matambre );
+		floreriaFlores.comprar(floreria, maria, tarjetaPremium, rosa);
+		floreriaRosa.comprar(floreria, maria, tarjetaPremium, petunia);
+		floreriaRosa.comprar(floreria, maria, tarjetaPremium, margarita);
+		floreriaRosa.comprar(floreria, maria, tarjetaPremium, malbon);
 		
 		Assert.assertEquals(floreriaRosa, club.sucursalQueMasVendio());
 		
-	}
-	
 
-	@Test
-	public void reporteElClienteRealizoUnaCompraConBeneficioDescuento() throws ExcepcionDescuento{
-		
-		ClubDeBeneficios club = new ClubDeBeneficios();
-		Establecimiento heladeria = new Establecimiento();
-		heladeria.setNombre("Verde");
-		club.agregarEstablecimiento(heladeria);
-		Sucursal heladeriaFlores= new Sucursal();
-		heladeria.agregarSucursal(heladeriaFlores);
-		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
-		descuento.agregarDatosDelBeneficio(10);
-		tarjetaPremium.agregarBeneficio(descuento);
-		Cliente lujan= new Cliente(tarjetaPremium);
-		club.agregarCliente(lujan);
-		Producto helado = new Producto("Medio kilo de helado", 100);
-		
-		club.compra(heladeria, heladeriaFlores, lujan, helado);
-		
-		List<String> detalle= new ArrayList<String>();
-		detalle.add(heladeria.getNombre());
-		detalle.add(helado.getNombre());
-		detalle.add("100.0");
-		detalle.add("90.0");
-		
-		
-		Assert.assertEquals(detalle, club.reporteDeClientes());
-		
-	}
-	
-
-	@Test
-	public void reporteDeDosClientesQueRealizaronUnaCompra() throws ExcepcionDescuento{
-		
-		ClubDeBeneficios club = new ClubDeBeneficios();
-		Establecimiento heladeria = new Establecimiento();
-		heladeria.setNombre("Verde");
-		club.agregarEstablecimiento(heladeria);
-		Sucursal heladeriaFlores= new Sucursal();
-		heladeria.agregarSucursal(heladeriaFlores);
-		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
-		descuento.agregarDatosDelBeneficio(10);
-		tarjetaPremium.agregarBeneficio(descuento);
-		Cliente lujan= new Cliente(tarjetaPremium);
-		club.agregarCliente(lujan);
-		Cliente maria= new Cliente(tarjetaPremium);
-		club.agregarCliente(maria);
-		Producto cono = new Producto("Cono", 100);
-		Producto helado = new Producto("Medio kilo de helado", 100);
-		
-		club.compra(heladeria, heladeriaFlores, lujan, helado);
-		club.compra(heladeria, heladeriaFlores, maria, cono);
-		
-		List<String> detalle= new ArrayList<String>();
-		detalle.add(heladeria.getNombre());
-		detalle.add(helado.getNombre());
-		detalle.add("100.0");
-		detalle.add("90.0");
-		detalle.add(heladeria.getNombre());
-		detalle.add(cono.getNombre());
-		detalle.add("100.0");
-		detalle.add("90.0");
-		
-		
-		Assert.assertEquals(detalle, club.reporteDeClientes());
-		
-	}
-		
-	
-	@Test
-	public void reporteDosClientesYSoloUnoRealizaUnaCompra() throws ExcepcionDescuento{
-		
-		ClubDeBeneficios club = new ClubDeBeneficios();
-		Establecimiento heladeria = new Establecimiento();
-		heladeria.setNombre("Verde");
-		club.agregarEstablecimiento(heladeria);
-		Sucursal heladeriaFlores= new Sucursal();
-		heladeria.agregarSucursal(heladeriaFlores);
-		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
-		descuento.agregarDatosDelBeneficio(10);
-		tarjetaPremium.agregarBeneficio(descuento);
-		Cliente lujan= new Cliente(tarjetaPremium);
-		club.agregarCliente(lujan);
-		Cliente maria= new Cliente(tarjetaPremium);
-		club.agregarCliente(maria);
-		Producto helado = new Producto("Medio kilo de helado", 100);
-		
-		club.compra(heladeria, heladeriaFlores, lujan, helado);
-		
-		
-		List<String> detalle= new ArrayList<String>();
-		detalle.add(heladeria.getNombre());
-		detalle.add(helado.getNombre());
-		detalle.add("100.0");
-		detalle.add("90.0");
-	
-				
-		Assert.assertEquals(detalle, club.reporteDeClientes());
-		
 	
 	}
 
@@ -412,18 +307,11 @@ public class IntegracionTest {
 		club.agregarCliente(maria);
 		Producto helado = new Producto("Medio kilo de helado", 100);
 		
-		club.compra(heladeria, heladeriaFlores, lujan, helado);
+		heladeriaFlores.comprar(heladeria, lujan, tarjetaPremium, helado);
 		
 		
-		List<String> detalle= new ArrayList<String>();
-		detalle.add(heladeria.getNombre());
-		detalle.add(helado.getNombre());
-		detalle.add("100.0");
-		detalle.add("90.0");
-	
 				
-		Assert.assertEquals(detalle, club.reporteDeClientes());
-		
 	
 	}
+	
 }

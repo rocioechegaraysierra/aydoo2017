@@ -13,7 +13,8 @@ public class Sucursal extends Establecimiento{
 		return cantidadDeVentas;
 	}
 	
-	public void comprar(){
-		this.cantidadDeVentas = this.cantidadDeVentas + 1;
+	public void comprar(Establecimiento establecimiento, Cliente cliente, Tarjeta tarjeta, Producto producto){
+		this.cantidadDeVentas += 1;
+				
 	}
 }
