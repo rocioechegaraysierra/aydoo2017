@@ -2,7 +2,7 @@ package ar.edu.untref.aydoo;
 
 
 public class Tarjeta {
-	
+
 	private Beneficio beneficio;
 	private CategoriaDeLaTarjeta categoria;
 

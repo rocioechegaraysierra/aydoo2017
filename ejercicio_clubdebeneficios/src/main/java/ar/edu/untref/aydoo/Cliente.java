@@ -58,5 +58,5 @@ public class Cliente {
 	public CategoriaDeLaTarjeta getTarjeta() {
 		return tarjeta.getCategoria();
 	}
-	
+
 }

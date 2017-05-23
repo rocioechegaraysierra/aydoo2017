@@ -1,6 +1,4 @@
 package ar.edu.untref.aydoo;
 
 
-public enum CategoriaDeLaTarjeta {
-	PREMIUM, CLASSIC
-}
+public enum CategoriaDeLaTarjeta { PREMIUM, CLASSIC }
