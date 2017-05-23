@@ -20,7 +20,7 @@ public class ClienteTest {
 		Beneficio descuento = new Beneficio();
 		descuento.agregarDatosDelBeneficio(10);
 		tarjetaPremium.agregarBeneficio(descuento);
-		Cliente lujan= new Cliente(tarjetaPremium);
+		Cliente lujan= new Cliente(tarjetaPremium, "lujan@gmail.com");
 		Producto helado = new Producto("Medio kilo de helado", 100);
 		
 		lujan.agregarDatosDeCompra(heladeria, helado, tarjetaPremium);
@@ -36,5 +36,30 @@ public class ClienteTest {
 		
 	}
 	
+	@Test
+	public void obtenerCategoriaDeTarjetaDelCliente() throws ExcepcionDescuento{
+		
+		
+		
+		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
+		Cliente lujan= new Cliente(tarjetaPremium, "lujan@gmail.com");
+	
+
+		Assert.assertEquals(CategoriaDeLaTarjeta.PREMIUM, lujan.getTarjeta());
+		
+	}
+	
+	@Test
+	public void obtenerMailDelCliente() throws ExcepcionDescuento{
+		
+		
+		
+		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
+		Cliente lujan= new Cliente(tarjetaPremium, "lujan@gmail.com");
+	
+
+		Assert.assertEquals("lujan@gmail.com", lujan.getMail());
+		
+	}
 
 }

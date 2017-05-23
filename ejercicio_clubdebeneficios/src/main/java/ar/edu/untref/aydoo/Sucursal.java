@@ -15,6 +15,6 @@ public class Sucursal extends Establecimiento{
 	
 	public void comprar(Establecimiento establecimiento, Cliente cliente, Tarjeta tarjeta, Producto producto){
 		this.cantidadDeVentas += 1;
-				
+		cliente.agregarDatosDeCompra(establecimiento, producto, tarjeta);
 	}
 }

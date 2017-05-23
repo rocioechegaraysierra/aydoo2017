@@ -11,14 +11,17 @@ public class Cliente {
 	private List<Double> precios;
 	private List<Double> preciosConBeneficios;
 	private Tarjeta tarjeta;
+	private String mail;
 
 
-	public Cliente(Tarjeta tarjeta){
+
+	public Cliente(Tarjeta tarjeta, String mail){
 		this.establecimientos = new ArrayList<String>();
 		this.productos = new ArrayList<String>();
 		this.precios = new ArrayList<Double>();
 		this.preciosConBeneficios = new ArrayList<Double>();
 		this.tarjeta = tarjeta;
+		this.mail = mail;
 		
 	}
 	
@@ -29,12 +32,10 @@ public class Cliente {
 			this.preciosConBeneficios.add(tarjeta.getBeneficio().aplicarBeneficio(producto.getPrecio()));
 
 	}
-	
 
-	
 	public List<String> imprimirReporte() {
 		List<String> detalles = new ArrayList<String>();
-		for(int i = 0; i < establecimientos.size(); i++){
+		for (int i = 0; i < establecimientos.size(); i++) {
 			detalles.add(establecimientos.get(i));
 			detalles.add(productos.get(i));
 			detalles.add(String.valueOf(precios.get(i)));
@@ -44,7 +45,21 @@ public class Cliente {
 		
 		return detalles;
 	}
+
+	public boolean isRealizoCompras() {
+		return !(this.establecimientos.isEmpty() 
+				&& this.productos.isEmpty() 
+				&& this.precios.isEmpty() && this.preciosConBeneficios.isEmpty());
+	}
 	
-	
+
+	public String getMail() {
+		return mail;
+	}
+
+
+	public CategoriaDeLaTarjeta getTarjeta() {
+		return tarjeta.getCategoria();
+	}
 	
 }

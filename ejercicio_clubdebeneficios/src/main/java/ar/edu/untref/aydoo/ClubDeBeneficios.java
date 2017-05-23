@@ -34,14 +34,13 @@ public class ClubDeBeneficios {
 	
 	public List<String> reporteDeClientes(){
 		
-		List<String> detalles= new ArrayList<String>();
+		List<String> detalles = new ArrayList<String>();
 		
-		Iterator<Cliente> itCliente= this.clientes.iterator();
-		while(itCliente.hasNext()){
+		Iterator<Cliente> itCliente = this.clientes.iterator();
+		while (itCliente.hasNext()) {
 			Cliente cliente = itCliente.next();
 			if(cliente.isRealizoCompras()){
-				detalles = cliente.imprimirReporte();
-				
+				detalles.addAll(cliente.imprimirReporte());
 			}
 		}
 		
