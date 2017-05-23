@@ -22,9 +22,8 @@ public class Cliente {
 		this.preciosConBeneficios = new ArrayList<Double>();
 		this.tarjeta = tarjeta;
 		this.mail = mail;
-		
 	}
-	
+
 	public void agregarDatosDeCompra(Establecimiento establecimiento, Producto producto, Tarjeta tarjeta){
 			this.establecimientos.add(establecimiento.getNombre());
 			this.productos.add(producto.getNombre());
@@ -40,18 +39,16 @@ public class Cliente {
 			detalles.add(productos.get(i));
 			detalles.add(String.valueOf(precios.get(i)));
 			detalles.add(String.valueOf(preciosConBeneficios.get(i)));
-			
 		}
-		
 		return detalles;
 	}
 
 	public boolean isRealizoCompras() {
-		return !(this.establecimientos.isEmpty() 
-				&& this.productos.isEmpty() 
-				&& this.precios.isEmpty() && this.preciosConBeneficios.isEmpty());
+		return !(this.establecimientos.isEmpty()
+				&& this.productos.isEmpty()
+				&& this.precios.isEmpty()
+				&& this.preciosConBeneficios.isEmpty());
 	}
-	
 
 	public String getMail() {
 		return mail;

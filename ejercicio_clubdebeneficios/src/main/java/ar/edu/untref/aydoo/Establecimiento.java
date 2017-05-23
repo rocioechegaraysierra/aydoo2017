@@ -6,10 +6,10 @@ import java.util.List;
 
 public class Establecimiento {
 
-	
+
 	private List<Sucursal> sucursales;
 	protected String nombre;
-	
+
 
 	public Establecimiento(){
 		this.sucursales = new ArrayList<Sucursal>();
@@ -18,7 +18,7 @@ public class Establecimiento {
 	public void setNombre (String nombre) {
 		this.nombre = nombre;
 	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -38,9 +38,8 @@ public class Establecimiento {
 	public void agregarSucursal (Sucursal sucursal) {
 		this.sucursales.add(sucursal);
 	}
-	
 
-	
+
 	public Sucursal sucursalConMasVentas(){
 		Sucursal sucursalConMasVentas = null;
 		int cantidadDeVentas = 0;
@@ -48,10 +47,9 @@ public class Establecimiento {
 		while (itSucursal.hasNext()) {
 			Sucursal sucursal = itSucursal.next();
 			if (sucursal.getCantidadDeVentas() > cantidadDeVentas ) {
-				sucursalConMasVentas=sucursal;
+				sucursalConMasVentas = sucursal;
 				cantidadDeVentas = sucursal.getCantidadDeVentas();
 			}
-			
 		}
 		return sucursalConMasVentas;
 	}

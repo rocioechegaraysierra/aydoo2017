@@ -1,10 +1,7 @@
 package ar.edu.untref.aydoo;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -29,7 +26,7 @@ public class IntegracionTest {
 		club.agregarEstablecimiento(heladeria);
 		Sucursal heladeriaFlores= new Sucursal();
 		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
+		BeneficioDescuento descuento = new BeneficioDescuento();
 		descuento.agregarDatosDelBeneficio(10);
 		tarjetaPremium.agregarBeneficio(descuento);
 		Cliente lujan= new Cliente(tarjetaPremium, "lujan@gmail.com");
@@ -53,7 +50,7 @@ public class IntegracionTest {
 		Sucursal floreriaFlores= new Sucursal();
 		floreria.agregarSucursal(floreriaFlores);
 		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
+		BeneficioDescuento descuento = new BeneficioDescuento();
 		descuento.agregarDatosDelBeneficio(10);
 		tarjetaPremium.agregarBeneficio(descuento);
 		Cliente lujan= new Cliente(tarjetaPremium, "lujan@gmail.com");
@@ -78,7 +75,7 @@ public class IntegracionTest {
 		Sucursal floreriaFlores= new Sucursal();
 		floreria.agregarSucursal(floreriaFlores);
 		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
+		BeneficioDescuento descuento = new BeneficioDescuento();
 		descuento.agregarDatosDelBeneficio(10);
 		tarjetaPremium.agregarBeneficio(descuento);
 		Cliente lujan= new Cliente(tarjetaPremium, "lujan@gmail.com");
@@ -120,7 +117,7 @@ public class IntegracionTest {
 		floreria.agregarSucursal(floreriaRosa);
 		floreria.agregarSucursal(floreriaFlores);
 		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
+		BeneficioDescuento descuento = new BeneficioDescuento();
 		descuento.agregarDatosDelBeneficio(10);
 		tarjetaPremium.agregarBeneficio(descuento);
 		Cliente maria= new Cliente(tarjetaPremium, "maria@gmail.com");
@@ -174,7 +171,7 @@ public class IntegracionTest {
 		Sucursal floreriaFlores= new Sucursal();
 		floreria.agregarSucursal(floreriaFlores);
 		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
+		BeneficioDescuento descuento = new BeneficioDescuento();
 		descuento.agregarDatosDelBeneficio(10);
 		tarjetaPremium.agregarBeneficio(descuento);
 		Cliente maria= new Cliente(tarjetaPremium, "maria@gmail.com");
@@ -201,7 +198,7 @@ public class IntegracionTest {
 		floreria.agregarSucursal(floreriaRosa);
 		floreria.agregarSucursal(floreriaFlores);
 		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
+		BeneficioDescuento descuento = new BeneficioDescuento();
 		descuento.agregarDatosDelBeneficio(10);
 		tarjetaPremium.agregarBeneficio(descuento);
 		Cliente maria= new Cliente(tarjetaPremium, "maria@gmail.com");
@@ -227,7 +224,7 @@ public class IntegracionTest {
 		Sucursal floreriaFlores= new Sucursal();
 		floreria.agregarSucursal(floreriaFlores);
 		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
+		BeneficioDescuento descuento = new BeneficioDescuento();
 		descuento.agregarDatosDelBeneficio(10);
 		tarjetaPremium.agregarBeneficio(descuento);
 		Cliente maria= new Cliente(tarjetaPremium, "maria@gmail.com");
@@ -267,7 +264,7 @@ public class IntegracionTest {
 		floreria.agregarSucursal(floreriaRosa);
 		floreria.agregarSucursal(floreriaFlores);
 		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
+		BeneficioDescuento descuento = new BeneficioDescuento();
 		descuento.agregarDatosDelBeneficio(10);
 		tarjetaPremium.agregarBeneficio(descuento);
 		Cliente maria= new Cliente(tarjetaPremium, "maria@gmail.com");
@@ -324,7 +321,7 @@ public class IntegracionTest {
 		Sucursal heladeriaFlores= new Sucursal();
 		heladeria.agregarSucursal(heladeriaFlores);
 		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
+		BeneficioDescuento descuento = new BeneficioDescuento();
 		descuento.agregarDatosDelBeneficio(2);
 		tarjetaPremium.agregarBeneficio(descuento);
 		Cliente lujan= new Cliente(tarjetaPremium, "lujan@gmail.com");
@@ -338,6 +335,38 @@ public class IntegracionTest {
 		
 	}
 	
+	
+	@Test 
+	public void beneficioDeDescuentoConPorcentajeMayorACinco() throws ExcepcionDescuento{
+		
+		ClubDeBeneficios club = new ClubDeBeneficios();
+		Establecimiento heladeria = new Establecimiento();
+		heladeria.setNombre("Verde");
+		club.agregarEstablecimiento(heladeria);
+		Sucursal heladeriaFlores= new Sucursal();
+		heladeria.agregarSucursal(heladeriaFlores);
+		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
+		BeneficioDescuento descuento = new BeneficioDescuento();
+		descuento.agregarDatosDelBeneficio(10);
+		tarjetaPremium.agregarBeneficio(descuento);
+		Cliente lujan= new Cliente(tarjetaPremium, "lujan@gmail.com");
+		club.agregarCliente(lujan);
+		Producto helado = new Producto("Medio kilo de helado", 100);
+		
+		heladeriaFlores.comprar(heladeria, lujan, tarjetaPremium, helado);
+	
+		List<String> detalle = new ArrayList<String>();
+		detalle.add(heladeria.getNombre());
+		detalle.add(helado.getNombre());
+		detalle.add("100.0");
+		detalle.add("90.0");
+		
+		
+		Assert.assertEquals(detalle, club.reporteDeClientes());
+	}
+	
+	
+	
 	@Test
 	public void reporteDeUnSoloCliente() throws ExcepcionDescuento{
 
@@ -347,7 +376,7 @@ public class IntegracionTest {
 		Sucursal sucursalFlores = new Sucursal();
 		heladeria.agregarSucursal(sucursalFlores);		
 		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
+		BeneficioDescuento descuento = new BeneficioDescuento();
 		descuento.agregarDatosDelBeneficio(10);
 		tarjetaPremium.agregarBeneficio(descuento);
 		Cliente lujan= new Cliente(tarjetaPremium, "lujan@gmail.com");
@@ -374,7 +403,7 @@ public class IntegracionTest {
 		Sucursal sucursalFlores = new Sucursal();
 		heladeria.agregarSucursal(sucursalFlores);		
 		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
-		Beneficio descuento = new Beneficio();
+		BeneficioDescuento descuento = new BeneficioDescuento();
 		descuento.agregarDatosDelBeneficio(10);
 		tarjetaPremium.agregarBeneficio(descuento);
 		Cliente lujan= new Cliente(tarjetaPremium, "lujan@gmail.com");
@@ -398,5 +427,38 @@ public class IntegracionTest {
 		
 		Assert.assertEquals(detalle, club.reporteDeClientes());
 	}
+	
+	
+
+	@Test 
+	public void beneficioDeDosPorUno() throws ExcepcionDosPorUno{
+		
+		ClubDeBeneficios club = new ClubDeBeneficios();
+		Establecimiento heladeria = new Establecimiento();
+		heladeria.setNombre("Verde");
+		club.agregarEstablecimiento(heladeria);
+		Sucursal heladeriaFlores= new Sucursal();
+		heladeria.agregarSucursal(heladeriaFlores);
+		Tarjeta tarjetaPremium= new Tarjeta(CategoriaDeLaTarjeta.PREMIUM);
+		BeneficioDosPorUno descuento = new BeneficioDosPorUno();
+		tarjetaPremium.agregarBeneficio(descuento);
+		Cliente lujan= new Cliente(tarjetaPremium, "lujan@gmail.com");
+		club.agregarCliente(lujan);
+		Producto cuartoKilo = new Producto("Cuarto kilo de helado", 50);
+		Producto medioKilo = new Producto("Medio kilo de helado", 100);
+		descuento.agregarProducto(medioKilo.getPrecio());
+		
+		heladeriaFlores.comprar(heladeria, lujan, tarjetaPremium, cuartoKilo);
+	
+		List<String> detalle = new ArrayList<String>();
+		detalle.add(heladeria.getNombre());
+		detalle.add(cuartoKilo.getNombre());
+		detalle.add("50.0");
+		detalle.add("100.0");
+		
+		
+		Assert.assertEquals(detalle, club.reporteDeClientes());
+	}
+	
 	
 }

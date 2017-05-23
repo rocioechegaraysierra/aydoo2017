@@ -1,20 +1,8 @@
 package ar.edu.untref.aydoo;
 
-public class Beneficio {
+public abstract class Beneficio {
 	
-	private int porcentaje;
-	private int porcentajeMinimo=5;
+	public abstract double aplicarBeneficio (double precio);
 	
-	public void agregarDatosDelBeneficio(final int porcentaje) throws ExcepcionDescuento{
-		if (porcentaje > porcentajeMinimo) {
-			this.porcentaje = porcentaje;
-		} else {
-			throw new ExcepcionDescuento("El porcentaje debe ser mayor al 5%");
-		}
-	}
-	
-	public double aplicarBeneficio(double precio){
-		return precio - ((precio * this.porcentaje)/100);
-	}
 	
 }
